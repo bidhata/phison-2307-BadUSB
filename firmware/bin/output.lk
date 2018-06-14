@@ -1,0 +1,23 @@
+-muwx
+-i bin\output.hex
+-M
+-Y
+-b HOME = 0x0000
+-b XSEG = 0x6000
+-b PSEG = 0x6000
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-k C:\Program Files\SDCC\bin\..\lib\small
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+bin\main.rel
+bin\timers.rel
+bin\usb.rel
+bin\control.rel
+bin\scsi.rel
+bin\serial.rel
+
+-e

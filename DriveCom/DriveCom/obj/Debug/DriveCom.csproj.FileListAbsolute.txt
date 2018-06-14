@@ -1,0 +1,7 @@
+C:\Users\Bidhata\Desktop\BadUSB\Psychson\tools\DriveCom.exe.config
+C:\Users\Bidhata\Desktop\BadUSB\Psychson\tools\DriveCom.exe
+C:\Users\Bidhata\Desktop\BadUSB\Psychson\tools\DriveCom.pdb
+C:\Users\Bidhata\Desktop\BadUSB\Psychson\DriveCom\DriveCom\obj\Debug\DriveCom.csprojAssemblyReference.cache
+C:\Users\Bidhata\Desktop\BadUSB\Psychson\DriveCom\DriveCom\obj\Debug\DriveCom.csproj.CoreCompileInputs.cache
+C:\Users\Bidhata\Desktop\BadUSB\Psychson\DriveCom\DriveCom\obj\Debug\DriveCom.exe
+C:\Users\Bidhata\Desktop\BadUSB\Psychson\DriveCom\DriveCom\obj\Debug\DriveCom.pdb
