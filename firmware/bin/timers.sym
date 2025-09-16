@@ -257,10 +257,10 @@ Symbol Table
     _IP                                                         =  0000B8 G
     _IT0                                                        =  000088 G
     _IT1                                                        =  00008A G
- 17 _InitLED                                                       0000E2 GR
+ 17 _InitLED                                                       0000D7 GR
  17 _InitTicks                                                     00000D GR
- 17 _LEDBlink                                                      0000FB GR
- 17 _LEDOff                                                        000105 GR
+ 17 _LEDBlink                                                      0000F0 GR
+ 17 _LEDOff                                                        0000FA GR
     _NANDCSDIR                                                  =  00F618 G
     _NANDCSOUT                                                  =  00F608 G
     _OV                                                         =  0000D2 G
@@ -292,7 +292,7 @@ Symbol Table
     _SM1                                                        =  00009E G
     _SM2                                                        =  00009D G
     _SP                                                         =  000081 G
- 17 _SetLEDThreshold                                               0000DD GR
+ 17 _SetLEDThreshold                                               0000D2 GR
     _T0                                                         =  0000B4 G
     _T1                                                         =  0000B5 G
     _TB8                                                        =  00009B G
@@ -347,14 +347,14 @@ Symbol Table
     acc.5                                                       =  0000E5 L
     acc.6                                                       =  0000E6 L
     acc.7                                                       =  0000E7 L
-    ar0                                                         =  000000 
-    ar1                                                         =  000001 
-    ar2                                                         =  000002 
-    ar3                                                         =  000003 
-    ar4                                                         =  000004 
-    ar5                                                         =  000005 
-    ar6                                                         =  000006 
-    ar7                                                         =  000007 
+    ar0                                                         =  000000
+    ar1                                                         =  000001
+    ar2                                                         =  000002
+    ar3                                                         =  000003
+    ar4                                                         =  000004
+    ar5                                                         =  000005
+    ar6                                                         =  000006
+    ar7                                                         =  000007
     b                                                           =  0000F0 L
     b.0                                                         =  0000F0 L
     b.1                                                         =  0000F1 L
@@ -557,8 +557,7 @@ Area Table
   14 GSINIT5                                    size      0   flags   20
   15 GSINIT                                     size      0   flags   20
   16 GSFINAL                                    size      0   flags   20
-  17 CSEG                                       size    10F   flags   20
+  17 CSEG                                       size    104   flags   20
   18 CONST                                      size      0   flags   20
   19 XINIT                                      size      0   flags   20
   1A CABS                                       size      0   flags   28
-

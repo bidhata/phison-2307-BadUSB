@@ -7,56 +7,56 @@ CABS                                00000000    00000000 =           0. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000000  l_BIT_BANK                      
-C:   00000000  l_BSEG                          
-C:   00000000  l_BSEG_BYTES                    
-C:   00000000  l_CABS                          
-C:   00000000  l_GSINIT1                       
-C:   00000000  l_GSINIT5                       
-C:   00000000  l_IABS                          
-C:   00000000  l_ISEG                          
-C:   00000000  l_PSEG                          
-C:   00000000  l_REG_BANK_1                    
-C:   00000000  l_REG_BANK_2                    
-C:   00000000  l_REG_BANK_3                    
-C:   00000000  l_RSEG                          
-C:   00000000  l_RSEG0                         
-C:   00000000  l_RSEG1                         
-C:   00000000  l_XABS                          
-C:   00000000  l_XINIT                         
-C:   00000000  l_XISEG                         
-C:   00000000  l__CODE                         
-C:   00000000  s_BSEG                          
-C:   00000000  s_CABS                          
-C:   00000000  s_DSEG                          
-C:   00000000  s_HOME                          
-C:   00000000  s_IABS                          
-C:   00000000  s_ISEG                          
-C:   00000000  s_REG_BANK_0                    
-C:   00000000  s_RSEG                          
-C:   00000000  s_RSEG0                         
-C:   00000000  s_RSEG1                         
-C:   00000000  s_XABS                          
-C:   00000003  l_GSFINAL                       
-C:   00000003  l_GSINIT0                       
-C:   00000003  l_OSEG                          
-C:   00000007  l_XSEG                          
-C:   00000008  l_REG_BANK_0                    
-C:   00000008  s_REG_BANK_1                    
-C:   0000000A  l_GSINIT2                       
-C:   00000010  l_GSINIT                        
-C:   00000010  s_REG_BANK_2                    
-C:   00000018  s_BIT_BANK                      
-C:   00000018  s_REG_BANK_3                    
-C:   00000020  s_BSEG_BYTES                    
-C:   00000020  s__CODE                         
-C:   00000022  l_GSINIT3                       
-C:   00000029  l_HOME                          
-C:   00000029  s_GSINIT0                       
-C:   0000002A  l_GSINIT4                       
-C:   0000002C  s_GSINIT1                       
-C:   0000002C  s_GSINIT2                       
-C:   00000036  s_GSINIT3                       
+C:   00000000  l_BIT_BANK
+C:   00000000  l_BSEG
+C:   00000000  l_BSEG_BYTES
+C:   00000000  l_CABS
+C:   00000000  l_GSINIT1
+C:   00000000  l_GSINIT5
+C:   00000000  l_IABS
+C:   00000000  l_ISEG
+C:   00000000  l_PSEG
+C:   00000000  l_REG_BANK_1
+C:   00000000  l_REG_BANK_2
+C:   00000000  l_REG_BANK_3
+C:   00000000  l_RSEG
+C:   00000000  l_RSEG0
+C:   00000000  l_RSEG1
+C:   00000000  l_XABS
+C:   00000000  l_XINIT
+C:   00000000  l_XISEG
+C:   00000000  l__CODE
+C:   00000000  s_BSEG
+C:   00000000  s_CABS
+C:   00000000  s_DSEG
+C:   00000000  s_HOME
+C:   00000000  s_IABS
+C:   00000000  s_ISEG
+C:   00000000  s_REG_BANK_0
+C:   00000000  s_RSEG
+C:   00000000  s_RSEG0
+C:   00000000  s_RSEG1
+C:   00000000  s_XABS
+C:   00000003  l_GSFINAL
+C:   00000003  l_GSINIT0
+C:   00000003  l_OSEG
+C:   00000007  l_XSEG
+C:   00000008  l_REG_BANK_0
+C:   00000008  s_REG_BANK_1
+C:   0000000A  l_GSINIT2
+C:   00000010  l_GSINIT
+C:   00000010  s_REG_BANK_2
+C:   00000018  s_BIT_BANK
+C:   00000018  s_REG_BANK_3
+C:   00000020  s_BSEG_BYTES
+C:   00000020  s__CODE
+C:   00000022  l_GSINIT3
+C:   00000029  l_HOME
+C:   00000029  s_GSINIT0
+C:   0000002A  l_GSINIT4
+C:   0000002C  s_GSINIT1
+C:   0000002C  s_GSINIT2
+C:   00000036  s_GSINIT3
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
@@ -66,23 +66,23 @@ CABS                                00000000    00000000 =           0. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000045  s_OSEG                          
-C:   00000048  s_SSEG                          
-C:   00000058  s_GSINIT4                       
-C:   00000080  l_DSEG                          
-C:   00000082  s_GSINIT                        
-C:   00000082  s_GSINIT5                       
-C:   00000092  s_GSFINAL                       
-C:   00000095  s_CSEG                          
-C:   000000B8  l_SSEG                          
-C:   00000100  l_IRAM                          
-C:   000010FB  l_CSEG                          
-C:   00001190  s_CONST                         
-C:   000020A2  l_CONST                         
-C:   00003232  s_XINIT                         
-C:   00006000  s_PSEG                          
-C:   00006000  s_XSEG                          
-C:   00006007  s_XISEG                         
+C:   00000045  s_OSEG
+C:   00000048  s_SSEG
+C:   00000058  s_GSINIT4
+C:   00000080  l_DSEG
+C:   00000082  s_GSINIT
+C:   00000082  s_GSINIT5
+C:   00000092  s_GSFINAL
+C:   00000095  s_CSEG
+C:   000000B8  l_SSEG
+C:   00000100  l_IRAM
+C:   000010C2  l_CSEG
+C:   00001157  s_CONST
+C:   000020A2  l_CONST
+C:   000031F9  s_XINIT
+C:   00006000  s_PSEG
+C:   00006000  s_XSEG
+C:   00006007  s_XISEG
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
@@ -126,7 +126,7 @@ Area                                    Addr        Size        Decimal Bytes (A
      0000009E  _SM1                               serial
      0000009F  _SM0                               serial
      000000A0  _P2                                serial
-     000000A0  __XPAGE                            
+     000000A0  __XPAGE
      000000A8  _EX0                               serial
      000000A8  _IE                                serial
      000000A9  _ET0                               serial
@@ -322,7 +322,7 @@ GSINIT0                             00000029    00000003 =           3. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000029  __sdcc_gsinit_startup              
+C:   00000029  __sdcc_gsinit_startup
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
 Hexadecimal  [32-Bits]
@@ -342,7 +342,7 @@ GSINIT3                             00000036    00000022 =          34. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000036  __mcs51_genXINIT                   
+C:   00000036  __mcs51_genXINIT
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
 Hexadecimal  [32-Bits]
@@ -353,8 +353,8 @@ GSINIT4                             00000058    0000002A =          42. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000058  __mcs51_genRAMCLEAR                
-C:   0000005E  __mcs51_genXRAMCLEAR               
+C:   00000058  __mcs51_genRAMCLEAR
+C:   0000005E  __mcs51_genXRAMCLEAR
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
 Hexadecimal  [32-Bits]
@@ -379,48 +379,48 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                00000095    000010FB =        4347. bytes (REL,CON,CODE)
+CSEG                                00000095    000010C2 =        4290. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   00000095  _InitHardware                      main
 C:   000001A4  _DoUSBRelatedInit                  main
 C:   0000026B  _SendKey                           main
-C:   000002B3  _main                              main
-C:   000003B9  _tmr1isr                           timers
-C:   000003C6  _InitTicks                         timers
-C:   0000040B  _GetTickCount                      timers
-C:   0000040F  _tmr0isr                           timers
-C:   00000496  _SetLEDThreshold                   timers
-C:   0000049B  _InitLED                           timers
-C:   000004B4  _LEDBlink                          timers
-C:   000004BE  _LEDOff                            timers
-C:   000004C8  _SetDMA                            usb
-C:   00000504  _SendControlResponse               usb
-C:   00000530  _SendData0                         usb
-C:   0000058F  _SendData1                         usb
-C:   000006FC  _InitUSB                           usb
-C:   00000853  _usb_isr                           usb
-C:   000009BF  _ep_isr                            usb
-C:   00000A8E  _HandleUSBEvents                   usb
-C:   00000CA9  _EP0ACK                            control
-C:   00000DC1  _HandleStandardRequest             control
-C:   00000E08  _HandleClassRequest                control
-C:   00000E35  _HandleVendorRequest               control
-C:   00000E39  _HandleCDB                         scsi
-C:   000010F0  _com0isr                           serial
-C:   000010F1  _memset                            _memset
-C:   00001110  __gptrput                          _gptrput
-C:   0000112B  __divuint                          _divuint
-C:   00001154  __divsint                          _divsint
-C:   0000118C  __sdcc_external_startup            _startup
+C:   000002B2  _main                              main
+C:   000003B8  _tmr1isr                           timers
+C:   000003C5  _InitTicks                         timers
+C:   0000040A  _GetTickCount                      timers
+C:   0000040E  _tmr0isr                           timers
+C:   0000048A  _SetLEDThreshold                   timers
+C:   0000048F  _InitLED                           timers
+C:   000004A8  _LEDBlink                          timers
+C:   000004B2  _LEDOff                            timers
+C:   000004BC  _SetDMA                            usb
+C:   000004F8  _SendControlResponse               usb
+C:   00000523  _SendData0                         usb
+C:   00000582  _SendData1                         usb
+C:   000006E6  _InitUSB                           usb
+C:   00000831  _usb_isr                           usb
+C:   000009A3  _ep_isr                            usb
+C:   00000A5C  _HandleUSBEvents                   usb
+C:   00000C68  _EP0ACK                            control
+C:   00000D94  _HandleStandardRequest             control
+C:   00000DD9  _HandleClassRequest                control
+C:   00000E06  _HandleVendorRequest               control
+C:   00000E0A  _HandleCDB                         scsi
+C:   000010B7  _com0isr                           serial
+C:   000010B8  _memset                            _memset
+C:   000010D7  __gptrput                          _gptrput
+C:   000010F2  __divuint                          _divuint
+C:   0000111B  __divsint                          _divsint
+C:   00001153  __sdcc_external_startup            _startup
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CONST                               00001190    000020A2 =        8354. bytes (REL,CON,CODE)
+CONST                               00001157    000020A2 =        8354. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -428,35 +428,35 @@ CONST                               00001190    000020A2 =        8354. bytes (R
 
 Files Linked                              [ module(s) ]
 
-bin\main.rel                              [  ]
-bin\timers.rel                            [  ]
-bin\usb.rel                               [  ]
-bin\control.rel                           [  ]
-bin\scsi.rel                              [  ]
-bin\serial.rel                            [  ]
+bin/main.rel                              [  ]
+bin/timers.rel                            [  ]
+bin/usb.rel                               [  ]
+bin/control.rel                           [  ]
+bin/scsi.rel                              [  ]
+bin/serial.rel                            [  ]
 
 
 Libraries Linked                          [ object file ]
 
-C:\Program Files\SDCC\bin\..\lib\small/mcs51.lib
+/usr/bin/../share/sdcc/lib/small/mcs51.lib
                                           [ crtclear.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/libsdcc.lib
+/usr/bin/../share/sdcc/lib/small/libsdcc.lib
                                           [ _memset.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/mcs51.lib
+/usr/bin/../share/sdcc/lib/small/mcs51.lib
                                           [ crtxinit.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/libsdcc.lib
+/usr/bin/../share/sdcc/lib/small/libsdcc.lib
                                           [ _gptrput.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/libint.lib
+/usr/bin/../share/sdcc/lib/small/libint.lib
                                           [ _divuint.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/mcs51.lib
+/usr/bin/../share/sdcc/lib/small/mcs51.lib
                                           [ crtxclear.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/mcs51.lib
+/usr/bin/../share/sdcc/lib/small/mcs51.lib
                                           [ crtpagesfr.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/mcs51.lib
+/usr/bin/../share/sdcc/lib/small/mcs51.lib
                                           [ crtstart.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/libint.lib
+/usr/bin/../share/sdcc/lib/small/libint.lib
                                           [ _divsint.rel ]
-C:\Program Files\SDCC\bin\..\lib\small/libsdcc.lib
+/usr/bin/../share/sdcc/lib/small/libsdcc.lib
                                           [ _startup.rel ]
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 21.

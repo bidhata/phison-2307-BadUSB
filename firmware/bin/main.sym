@@ -334,7 +334,7 @@ Symbol Table
     _ep_isr                                                        ****** GX
  19 _keyData                                                       000000 R
   5 _key_index                                                     000000 GR
- 18 _main                                                          00021E GR
+ 18 _main                                                          00021D GR
   5 _send_keys_enabled                                             000002 GR
     _tmr0isr                                                       ****** GX
     _tmr1isr                                                       ****** GX
@@ -365,14 +365,14 @@ Symbol Table
 
     acc.6                                                       =  0000E6 L
     acc.7                                                       =  0000E7 L
-    ar0                                                         =  000000 
-    ar1                                                         =  000001 
-    ar2                                                         =  000002 
-    ar3                                                         =  000003 
-    ar4                                                         =  000004 
-    ar5                                                         =  000005 
-    ar6                                                         =  000006 
-    ar7                                                         =  000007 
+    ar0                                                         =  000000
+    ar1                                                         =  000001
+    ar2                                                         =  000002
+    ar3                                                         =  000003
+    ar4                                                         =  000004
+    ar5                                                         =  000005
+    ar6                                                         =  000006
+    ar7                                                         =  000007
     b                                                           =  0000F0 L
     b.0                                                         =  0000F0 L
     b.1                                                         =  0000F1 L
@@ -576,8 +576,7 @@ Area Table
   15 GSINIT5                                    size      0   flags   20
   16 GSINIT                                     size     10   flags   20
   17 GSFINAL                                    size      3   flags   20
-  18 CSEG                                       size    324   flags   20
+  18 CSEG                                       size    323   flags   20
   19 CONST                                      size   2000   flags   20
   1A XINIT                                      size      0   flags   20
   1B CABS                                       size      0   flags   28
-

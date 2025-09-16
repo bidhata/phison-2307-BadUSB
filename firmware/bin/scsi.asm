@@ -1,10 +1,10 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.7.1 #10443 (MINGW64)
+; Version 4.2.0 #13081 (Linux)
 ;--------------------------------------------------------
 	.module scsi
 	.optsdcc -mmcs51 --model-small
-	
+
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
@@ -222,7 +222,7 @@ _scsi_cdb::
 _scsi_cdb_size::
 	.ds 1
 ;--------------------------------------------------------
-; overlayable items in internal ram 
+; overlayable items in internal ram
 ;--------------------------------------------------------
 ;--------------------------------------------------------
 ; indirectly addressable internal ram data
@@ -323,8 +323,8 @@ _PRAMCTL	=	0xfa48
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'HandleCDB'
 ;------------------------------------------------------------
-;i                         Allocated to registers r6 r7 
-;i                         Allocated with name '_HandleCDB_i_5_44'
+;i                         Allocated to registers r6 r7
+;i                         Allocated with name '_HandleCDB_i_327680_49'
 ;------------------------------------------------------------
 ;	scsi.c:29: BYTE HandleCDB()
 ;	-----------------------------------------
@@ -630,7 +630,6 @@ _HandleCDB:
 00115$:
 	mov	dptr,#0xf41e
 	movx	a,@dptr
-	mov	r7,a
 	jnb	acc.0,00115$
 ;	scsi.c:134: XVAL(0xF400) = 0x90;
 	mov	dptr,#0xf400
@@ -651,7 +650,6 @@ _HandleCDB:
 	mov	r5,a
 	mov	dptr,#0xf408
 	movx	a,@dptr
-	mov	r3,a
 	mov	dpl,r4
 	mov	dph,r5
 	movx	@dptr,a
@@ -748,11 +746,7 @@ _HandleCDB:
 ;	scsi.c:169: XVAL(0xFA38) |= 0x01;
 	mov	dptr,#0xfa38
 	movx	a,@dptr
-	mov	r7,a
-	mov	r6,#0x00
-	orl	ar7,#0x01
-	mov	dptr,#0xfa38
-	mov	a,r7
+	orl	a,#0x01
 	movx	@dptr,a
 ;	scsi.c:170: XVAL(0xF08F) = 0x00;
 	mov	dptr,#0xf08f

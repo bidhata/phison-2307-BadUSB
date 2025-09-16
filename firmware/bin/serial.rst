@@ -1,10 +1,10 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
-                                      3 ; Version 3.7.1 #10443 (MINGW64)
+                                      3 ; Version 4.2.0 #13081 (Linux)
                                       4 ;--------------------------------------------------------
                                       5 	.module serial
                                       6 	.optsdcc -mmcs51 --model-small
-                                      7 	
+                                      7
                                       8 ;--------------------------------------------------------
                                       9 ; Public variables in this module
                                      10 ;--------------------------------------------------------
@@ -196,7 +196,7 @@
                                     196 ;--------------------------------------------------------
                                     197 	.area DSEG    (DATA)
                                     198 ;--------------------------------------------------------
-                                    199 ; overlayable items in internal ram 
+                                    199 ; overlayable items in internal ram
                                     200 ;--------------------------------------------------------
                                     201 ;--------------------------------------------------------
                                     202 ; indirectly addressable internal ram data
@@ -301,7 +301,7 @@
                                     301 ;	-----------------------------------------
                                     302 ;	 function com0isr
                                     303 ;	-----------------------------------------
-      0010F0                        304 _com0isr:
+      0010B7                        304 _com0isr:
                            000007   305 	ar7 = 0x07
                            000006   306 	ar6 = 0x06
                            000005   307 	ar5 = 0x05
@@ -311,9 +311,9 @@
                            000001   311 	ar1 = 0x01
                            000000   312 	ar0 = 0x00
                                     313 ;	serial.c:5: }
-      0010F0 32               [24]  314 	reti
+      0010B7 32               [24]  314 	reti
                                     315 ;	eliminated unneeded mov psw,# (no regs used in bank)
-                                    316 ;	eliminated unneeded push/pop psw
+                                    316 ;	eliminated unneeded push/pop not_psw
                                     317 ;	eliminated unneeded push/pop dpl
                                     318 ;	eliminated unneeded push/pop dph
                                     319 ;	eliminated unneeded push/pop b

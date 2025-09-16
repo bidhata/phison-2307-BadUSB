@@ -1,10 +1,10 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.7.1 #10443 (MINGW64)
+; Version 4.2.0 #13081 (Linux)
 ;--------------------------------------------------------
 	.module usb
 	.optsdcc -mmcs51 --model-small
-	
+
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
@@ -236,7 +236,7 @@ _SendData0_PARM_2:
 _SendData1_PARM_2:
 	.ds 1
 ;--------------------------------------------------------
-; overlayable items in internal ram 
+; overlayable items in internal ram
 ;--------------------------------------------------------
 	.area	OSEG    (OVR,DATA)
 _SetDMA_PARM_2:
@@ -360,7 +360,7 @@ _usb_have_csw_ready::
 ;------------------------------------------------------------
 ;p3                        Allocated with name '_SetDMA_PARM_2'
 ;px                        Allocated with name '_SetDMA_PARM_3'
-;p5                        Allocated to registers r7 
+;p5                        Allocated to registers r7
 ;------------------------------------------------------------
 ;	usb.c:34: void SetDMA(BYTE p5, BYTE p3, BYTE px)
 ;	-----------------------------------------
@@ -430,7 +430,7 @@ _SetDMA:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'SendControlResponse'
 ;------------------------------------------------------------
-;size                      Allocated to registers r6 r7 
+;size                      Allocated to registers r6 r7
 ;------------------------------------------------------------
 ;	usb.c:64: void SendControlResponse(int size)
 ;	-----------------------------------------
@@ -461,7 +461,6 @@ _SendControlResponse:
 00101$:
 	mov	dptr,#(_EP0 + 0x0013)
 	movx	a,@dptr
-	mov	r7,a
 	jb	acc.6,00101$
 ;	usb.c:71: EP0CS = 0x05;
 	mov	dptr,#_EP0CS
@@ -473,7 +472,7 @@ _SendControlResponse:
 ;Allocation info for local variables in function 'SendData0'
 ;------------------------------------------------------------
 ;offset                    Allocated with name '_SendData0_PARM_2'
-;size                      Allocated to registers r6 r7 
+;size                      Allocated to registers r6 r7
 ;------------------------------------------------------------
 ;	usb.c:74: void SendData0(WORD size, BYTE offset)
 ;	-----------------------------------------
@@ -529,11 +528,11 @@ _SendData0:
 	mov	dptr,#(_EP0 + 0x000e)
 	clr	a
 	movx	@dptr,a
-;	usb.c:87: EP0.cs = 0x88;		
+;	usb.c:87: EP0.cs = 0x88;
 	mov	dptr,#(_EP0 + 0x0013)
 	mov	a,#0x88
 	movx	@dptr,a
-;	usb.c:89: while(EP0.cs & 0x80);	
+;	usb.c:89: while(EP0.cs & 0x80);
 00101$:
 	mov	dptr,#(_EP0 + 0x0013)
 	movx	a,@dptr
@@ -546,7 +545,7 @@ _SendData0:
 ;Allocation info for local variables in function 'SendData1'
 ;------------------------------------------------------------
 ;offset                    Allocated with name '_SendData1_PARM_2'
-;size                      Allocated to registers r6 r7 
+;size                      Allocated to registers r6 r7
 ;------------------------------------------------------------
 ;	usb.c:93: void SendData1(WORD size, BYTE offset)
 ;	-----------------------------------------
@@ -602,11 +601,11 @@ _SendData1:
 	mov	dptr,#(_EP1 + 0x000e)
 	clr	a
 	movx	@dptr,a
-;	usb.c:106: EP1.cs = 0x88;		
+;	usb.c:106: EP1.cs = 0x88;
 	mov	dptr,#(_EP1 + 0x0013)
 	mov	a,#0x88
 	movx	@dptr,a
-;	usb.c:108: while(EP1.cs & 0x80);	
+;	usb.c:108: while(EP1.cs & 0x80);
 00101$:
 	mov	dptr,#(_EP1 + 0x0013)
 	movx	a,@dptr
@@ -709,22 +708,15 @@ _SendCSW2:
 	mov	r7,a
 	jb	acc.1,00101$
 ;	usb.c:136: while((EP1.r17 & 0x80)==0)
-	mov	dptr,#0xf010
-	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0x20
-	anl	a,r7
-	mov	r6,a
-	mov	r7,#0x00
 00106$:
 	mov	dptr,#(_EP1 + 0x0017)
 	movx	a,@dptr
-	mov	r5,a
+	mov	r7,a
 	jb	acc.7,00109$
 ;	usb.c:138: if ((XVAL(0xF010) & 0x20)==0)
-	mov	a,r6
-	orl	a,r7
-	jnz	00106$
+	mov	dptr,#0xf010
+	movx	a,@dptr
+	jb	acc.5,00106$
 ;	usb.c:140: usb_have_csw_ready = 0;
 	mov	dptr,#_usb_have_csw_ready
 	clr	a
@@ -753,7 +745,6 @@ _SendCSW2:
 00118$:
 	mov	dptr,#(_EP4 + 0x0013)
 	movx	a,@dptr
-	mov	r7,a
 	jb	acc.6,00118$
 ;	usb.c:150: EP1.fifo = 'U';
 ;	usb.c:151: EP1.fifo = 'S';
@@ -815,7 +806,7 @@ _SendCSW2:
 ;	usb.c:165: EP1.len_h = 0;
 	mov	dptr,#(_EP1 + 0x000e)
 	movx	@dptr,a
-;	usb.c:166: EP1.cs = 0x40;		
+;	usb.c:166: EP1.cs = 0x40;
 	mov	dptr,#(_EP1 + 0x0013)
 	mov	a,#0x40
 	movx	@dptr,a
@@ -833,7 +824,7 @@ _SendCSW2:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'InitUSB'
 ;------------------------------------------------------------
-;b                         Allocated to registers r7 
+;b                         Allocated to registers r7
 ;------------------------------------------------------------
 ;	usb.c:171: void InitUSB(void)
 ;	-----------------------------------------
@@ -911,9 +902,9 @@ _InitUSB:
 	mov	dptr,#_USBSTAT
 	movx	a,@dptr
 	anl	a,#0x07
-	jz	00144$
+	jz	00145$
 	sjmp	00105$
-00144$:
+00145$:
 ;	usb.c:198: usb_speed = bmHighSpeed;
 	mov	_usb_speed,#0x00
 	sjmp	00109$
@@ -1110,11 +1101,7 @@ _InitUSB:
 ;	usb.c:362: XVAL(0xFA38) |= 2;
 	mov	dptr,#0xfa38
 	movx	a,@dptr
-	mov	r7,a
-	mov	r6,#0x00
-	orl	ar7,#0x02
-	mov	dptr,#0xfa38
-	mov	a,r7
+	orl	a,#0x02
 	movx	@dptr,a
 ;	usb.c:364: EX1 = 1;
 ;	assignBit
@@ -1122,14 +1109,10 @@ _InitUSB:
 ;	usb.c:365: EX0 = 1;
 ;	assignBit
 	setb	_EX0
-;	usb.c:366: for (b = 0; b < 250; b++);			
+;	usb.c:366: for (b = 0; b < 250; b++);
 	mov	r7,#0xfa
 00116$:
-	mov	a,r7
-	dec	a
-	mov	r6,a
-	mov	r7,a
-	jnz	00116$
+	djnz	r7,00116$
 ;	usb.c:368: }
 	ret
 ;------------------------------------------------------------
@@ -1241,7 +1224,6 @@ _usb_isr:
 ;	usb.c:413: UsbIntStsF080 = XVAL(0xF080);
 	mov	dptr,#0xf080
 	movx	a,@dptr
-	mov	r6,a
 	mov	dptr,#_UsbIntStsF080
 	movx	@dptr,a
 ;	usb.c:415: if (UsbIntStsF082 & 0x80)
@@ -1289,12 +1271,14 @@ _usb_isr:
 	movx	a,@dptr
 	mov	r5,a
 	clr	a
+	mov	r6,a
 	mov	r4,a
-	orl	a,r7
-	mov	_wValue,a
-	mov	a,r5
-	orl	a,r4
-	mov	(_wValue + 1),a
+	mov	a,r7
+	orl	ar6,a
+	mov	a,r4
+	orl	ar5,a
+	mov	_wValue,r6
+	mov	(_wValue + 1),r5
 ;	usb.c:433: wIndex = SETUPDAT[4] | (SETUPDAT[5] << 8);
 	mov	dptr,#(_SETUPDAT + 0x0004)
 	movx	a,@dptr
@@ -1303,12 +1287,14 @@ _usb_isr:
 	movx	a,@dptr
 	mov	r5,a
 	clr	a
+	mov	r6,a
 	mov	r4,a
-	orl	a,r7
-	mov	_wIndex,a
-	mov	a,r5
-	orl	a,r4
-	mov	(_wIndex + 1),a
+	mov	a,r7
+	orl	ar6,a
+	mov	a,r4
+	orl	ar5,a
+	mov	_wIndex,r6
+	mov	(_wIndex + 1),r5
 ;	usb.c:434: wLength = SETUPDAT[6] | (SETUPDAT[7] << 8);
 	mov	dptr,#(_SETUPDAT + 0x0006)
 	movx	a,@dptr
@@ -1319,16 +1305,16 @@ _usb_isr:
 	clr	a
 	mov	r6,a
 	mov	r4,a
-	orl	a,r7
-	mov	_wLength,a
-	mov	a,r5
-	orl	a,r4
-	mov	(_wLength + 1),a
+	mov	a,r7
+	orl	ar6,a
+	mov	a,r4
+	orl	ar5,a
+	mov	_wLength,r6
+	mov	(_wLength + 1),r5
 00125$:
 ;	usb.c:438: if (XVAL(0xF082) & 0x20)
 	mov	dptr,#0xf082
 	movx	a,@dptr
-	mov	r7,a
 	jnb	acc.5,00127$
 ;	usb.c:440: XVAL(0xF082) = 0x20;
 	mov	dptr,#0xf082
@@ -1338,7 +1324,6 @@ _usb_isr:
 ;	usb.c:443: if (XVAL(0xF081) & 0x10)
 	mov	dptr,#0xf081
 	movx	a,@dptr
-	mov	r7,a
 	jnb	acc.4,00129$
 ;	usb.c:445: XVAL(0xF081) = 0x10;
 	mov	dptr,#0xf081
@@ -1348,7 +1333,6 @@ _usb_isr:
 ;	usb.c:448: if (XVAL(0xF081) & 0x20)
 	mov	dptr,#0xf081
 	movx	a,@dptr
-	mov	r7,a
 	jnb	acc.5,00131$
 ;	usb.c:450: XVAL(0xF081) = 0x20;
 	mov	dptr,#0xf081
@@ -1370,7 +1354,6 @@ _usb_isr:
 	orl	ar7,a
 	mov	dptr,#_usb_irq
 	movx	a,@dptr
-	mov	r6,a
 	orl	a,r7
 	jz	00134$
 ;	usb.c:455: EX0 = 0;
@@ -1391,7 +1374,7 @@ _usb_isr:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'ep_isr'
 ;------------------------------------------------------------
-;interrupts                Allocated to registers r7 
+;interrupts                Allocated to registers r7
 ;------------------------------------------------------------
 ;	usb.c:459: void ep_isr(void) __interrupt EP_VECT
 ;	-----------------------------------------
@@ -1402,8 +1385,6 @@ _ep_isr:
 	push	dpl
 	push	dph
 	push	ar7
-	push	ar6
-	push	ar5
 	push	psw
 	mov	psw,#0x00
 ;	usb.c:461: BYTE interrupts = (EPIRQ & (bmEP2IRQ | bmEP4IRQ));
@@ -1413,7 +1394,7 @@ _ep_isr:
 ;	usb.c:462: if (interrupts & bmEP2IRQ)
 	mov	r7,a
 	jnb	acc.1,00102$
-;	usb.c:464: EPIE &= ~bmEP2IRQ; //disable this 
+;	usb.c:464: EPIE &= ~bmEP2IRQ; //disable this
 	mov	dptr,#_EPIE
 	movx	a,@dptr
 	anl	acc,#0xfd
@@ -1425,17 +1406,13 @@ _ep_isr:
 ;	usb.c:466: usb_received_data_ready |= bmEP2IRQ;
 	mov	dptr,#_usb_received_data_ready
 	movx	a,@dptr
-	mov	r6,a
-	mov	r5,#0x00
-	orl	ar6,#0x02
-	mov	dptr,#_usb_received_data_ready
-	mov	a,r6
+	orl	acc,#0x02
 	movx	@dptr,a
 00102$:
 ;	usb.c:469: if (interrupts & bmEP4IRQ)
 	mov	a,r7
 	jnb	acc.3,00105$
-;	usb.c:471: EPIE &= ~bmEP4IRQ; //disable this 
+;	usb.c:471: EPIE &= ~bmEP4IRQ; //disable this
 	mov	dptr,#_EPIE
 	movx	a,@dptr
 	anl	acc,#0xf7
@@ -1447,17 +1424,11 @@ _ep_isr:
 ;	usb.c:473: usb_received_data_ready |= bmEP4IRQ;
 	mov	dptr,#_usb_received_data_ready
 	movx	a,@dptr
-	mov	r7,a
-	mov	r6,#0x00
-	orl	ar7,#0x08
-	mov	dptr,#_usb_received_data_ready
-	mov	a,r7
+	orl	acc,#0x08
 	movx	@dptr,a
 00105$:
 ;	usb.c:475: }
 	pop	psw
-	pop	ar5
-	pop	ar6
 	pop	ar7
 	pop	dph
 	pop	dpl
@@ -1494,7 +1465,7 @@ _ResetEPs:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'HandleControlRequest'
 ;------------------------------------------------------------
-;res                       Allocated to registers r7 
+;res                       Allocated to registers r7
 ;------------------------------------------------------------
 ;	usb.c:486: static void HandleControlRequest(void)
 ;	-----------------------------------------
@@ -1566,10 +1537,10 @@ _HandleControlRequest:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'HandleUSBEvents'
 ;------------------------------------------------------------
-;a                         Allocated to registers r7 
-;b                         Allocated to registers r6 
-;c                         Allocated to registers r5 
-;d                         Allocated to registers r4 
+;a                         Allocated to registers r7
+;b                         Allocated to registers r6
+;c                         Allocated to registers r5
+;d                         Allocated to registers r4
 ;------------------------------------------------------------
 ;	usb.c:510: void HandleUSBEvents(void)
 ;	-----------------------------------------
@@ -1674,17 +1645,17 @@ _HandleUSBEvents:
 	mov	dptr,#_UsbIntStsF080
 	clr	a
 	movx	@dptr,a
-;	usb.c:554: UsbIntStsF082 = 0; 
+;	usb.c:554: UsbIntStsF082 = 0;
 	mov	dptr,#_UsbIntStsF082
 	movx	@dptr,a
-;	usb.c:555: UsbIntStsF086 = 0; 
+;	usb.c:555: UsbIntStsF086 = 0;
 	mov	dptr,#_UsbIntStsF086
 	movx	@dptr,a
 ;	usb.c:556: UsbIntStsF087 = 0;
 	mov	dptr,#_UsbIntStsF087
 	movx	@dptr,a
 00117$:
-;	usb.c:559: EX0 = 1;	
+;	usb.c:559: EX0 = 1;
 ;	assignBit
 	setb	_EX0
 ;	usb.c:563: if (1)//usb_received_data_ready)
@@ -1707,11 +1678,7 @@ _HandleUSBEvents:
 ;	usb.c:573: EPIE |= bmEP4IRQ;
 	mov	dptr,#_EPIE
 	movx	a,@dptr
-	mov	r7,a
-	mov	r6,#0x00
-	orl	ar7,#0x08
-	mov	dptr,#_EPIE
-	mov	a,r7
+	orl	acc,#0x08
 	movx	@dptr,a
 00123$:
 ;	usb.c:577: if (usb_received_data_ready & bmEP2IRQ)
@@ -1873,7 +1840,6 @@ _HandleUSBEvents:
 	mov	r1,a
 	mov	dptr,#(_EP2 + 0x001c)
 	movx	a,@dptr
-	mov	r6,a
 	mov	@r1,a
 ;	usb.c:606: for(a = 0; a < 16; a++)
 	inc	r7
@@ -1896,7 +1862,7 @@ _HandleUSBEvents:
 	orl	a,(_scsi_transfer_size + 2)
 	orl	a,(_scsi_transfer_size + 3)
 	jnz	00129$
-;	usb.c:617: EP1.cs = bmSTALL; 
+;	usb.c:617: EP1.cs = bmSTALL;
 	mov	dptr,#(_EP1 + 0x0013)
 	mov	a,#0x02
 	movx	@dptr,a
@@ -1947,11 +1913,7 @@ _HandleUSBEvents:
 ;	usb.c:644: EPIE |= bmEP2IRQ;
 	mov	dptr,#_EPIE
 	movx	a,@dptr
-	mov	r7,a
-	mov	r6,#0x00
-	orl	ar7,#0x02
-	mov	dptr,#_EPIE
-	mov	a,r7
+	orl	acc,#0x02
 	movx	@dptr,a
 00145$:
 ;	usb.c:648: if (usb_have_csw_ready)

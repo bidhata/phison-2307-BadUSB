@@ -332,14 +332,14 @@ Symbol Table
     acc.5                                                       =  0000E5 L
     acc.6                                                       =  0000E6 L
     acc.7                                                       =  0000E7 L
-    ar0                                                         =  000000 
-    ar1                                                         =  000001 
-    ar2                                                         =  000002 
-    ar3                                                         =  000003 
-    ar4                                                         =  000004 
-    ar5                                                         =  000005 
-    ar6                                                         =  000006 
-    ar7                                                         =  000007 
+    ar0                                                         =  000000
+    ar1                                                         =  000001
+    ar2                                                         =  000002
+    ar3                                                         =  000003
+    ar4                                                         =  000004
+    ar5                                                         =  000005
+    ar6                                                         =  000006
+    ar7                                                         =  000007
     b                                                           =  0000F0 L
     b.0                                                         =  0000F0 L
     b.1                                                         =  0000F1 L
@@ -545,4 +545,3 @@ Area Table
   17 CONST                                      size      0   flags   20
   18 XINIT                                      size      0   flags   20
   19 CABS                                       size      0   flags   28
-

@@ -1,10 +1,10 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.7.1 #10443 (MINGW64)
+; Version 4.2.0 #13081 (Linux)
 ;--------------------------------------------------------
 	.module serial
 	.optsdcc -mmcs51 --model-small
-	
+
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
@@ -196,7 +196,7 @@ _RI	=	0x0098
 ;--------------------------------------------------------
 	.area DSEG    (DATA)
 ;--------------------------------------------------------
-; overlayable items in internal ram 
+; overlayable items in internal ram
 ;--------------------------------------------------------
 ;--------------------------------------------------------
 ; indirectly addressable internal ram data
@@ -313,7 +313,7 @@ _com0isr:
 ;	serial.c:5: }
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
-;	eliminated unneeded push/pop psw
+;	eliminated unneeded push/pop not_psw
 ;	eliminated unneeded push/pop dpl
 ;	eliminated unneeded push/pop dph
 ;	eliminated unneeded push/pop b

@@ -22,8 +22,8 @@ Stack starts at: 0x48 (sp set to 0x47) with 184 bytes available.
 No spare internal RAM space left.
 
 Other memory:
-   Name             Start    End      Size     Max     
+   Name             Start    End      Size     Max
    ---------------- -------- -------- -------- --------
-   PAGED EXT. RAM                         0      256   
-   EXTERNAL RAM     0x6000   0x6006       7    65536   
-   ROM/EPROM/FLASH  0x0000   0x3231   12850    65536   
+   PAGED EXT. RAM                         0      256
+   EXTERNAL RAM     0x6000   0x6006       7    65536
+   ROM/EPROM/FLASH  0x0000   0x31f8   12793    65536

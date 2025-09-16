@@ -1,10 +1,10 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
-                                      3 ; Version 3.7.1 #10443 (MINGW64)
+                                      3 ; Version 4.2.0 #13081 (Linux)
                                       4 ;--------------------------------------------------------
                                       5 	.module scsi
                                       6 	.optsdcc -mmcs51 --model-small
-                                      7 	
+                                      7
                                       8 ;--------------------------------------------------------
                                       9 ; Public variables in this module
                                      10 ;--------------------------------------------------------
@@ -222,7 +222,7 @@
       00001F                        222 _scsi_cdb_size::
       00001F                        223 	.ds 1
                                     224 ;--------------------------------------------------------
-                                    225 ; overlayable items in internal ram 
+                                    225 ; overlayable items in internal ram
                                     226 ;--------------------------------------------------------
                                     227 ;--------------------------------------------------------
                                     228 ; indirectly addressable internal ram data
@@ -323,8 +323,8 @@
                                     323 ;------------------------------------------------------------
                                     324 ;Allocation info for local variables in function 'HandleCDB'
                                     325 ;------------------------------------------------------------
-                                    326 ;i                         Allocated to registers r6 r7 
-                                    327 ;i                         Allocated with name '_HandleCDB_i_5_44'
+                                    326 ;i                         Allocated to registers r6 r7
+                                    327 ;i                         Allocated with name '_HandleCDB_i_327680_49'
                                     328 ;------------------------------------------------------------
                                     329 ;	scsi.c:29: BYTE HandleCDB()
                                     330 ;	-----------------------------------------
@@ -370,7 +370,7 @@
       000031 BF C7 03         [24]  370 	cjne	r7,#0xc7,00218$
       000034 02r01r18         [24]  371 	ljmp	00109$
       000037                        372 00218$:
-      000037 02r02rB3         [24]  373 	ljmp	00123$
+      000037 02r02rA9         [24]  373 	ljmp	00123$
                                     374 ;	scsi.c:36: case PREVENT_ALLOW_MEDIUM_REMOVAL:
       00003A                        375 00101$:
                                     376 ;	scsi.c:38: scsi_status = 0;
@@ -512,7 +512,7 @@
                                     512 ;	scsi.c:91: switch(scsi_cdb[1])
       000118 AF*10            [24]  513 	mov	r7,(_scsi_cdb + 0x0001)
       00011A BF 05 03         [24]  514 	cjne	r7,#0x05,00219$
-      00011D 02r02r19         [24]  515 	ljmp	00119$
+      00011D 02r02r17         [24]  515 	ljmp	00119$
       000120                        516 00219$:
       000120 BF 06 02         [24]  517 	cjne	r7,#0x06,00220$
       000123 80 1E            [24]  518 	sjmp	00110$
@@ -530,9 +530,9 @@
       000137 02r01rAC         [24]  530 	ljmp	00114$
       00013A                        531 00224$:
       00013A BF BF 03         [24]  532 	cjne	r7,#0xbf,00225$
-      00013D 02r02r70         [24]  533 	ljmp	00120$
+      00013D 02r02r6E         [24]  533 	ljmp	00120$
       000140                        534 00225$:
-      000140 02r02rAF         [24]  535 	ljmp	00121$
+      000140 02r02rA5         [24]  535 	ljmp	00121$
                                     536 ;	scsi.c:93: case CUSTOM_XPEEK:
       000143                        537 00110$:
                                     538 ;	scsi.c:95: usb_buffer[0] = XVAL((scsi_cdb[2] << 8) | scsi_cdb[3]);
@@ -554,7 +554,7 @@
       00015D 90 00 01         [24]  554 	mov	dptr,#0x0001
       000160 12r00r00         [24]  555 	lcall	_SendData1
                                     556 ;	scsi.c:97: break;
-      000163 02r02rB3         [24]  557 	ljmp	00123$
+      000163 02r02rA9         [24]  557 	ljmp	00123$
                                     558 ;	scsi.c:99: case CUSTOM_XPOKE:
       000166                        559 00111$:
                                     560 ;	scsi.c:101: XVAL((scsi_cdb[2] << 8) | scsi_cdb[3]) = scsi_cdb[4];
@@ -575,7 +575,7 @@
       00017E 90 00 01         [24]  575 	mov	dptr,#0x0001
       000181 12r00r00         [24]  576 	lcall	_SendData1
                                     577 ;	scsi.c:103: break;
-      000184 02r02rB3         [24]  578 	ljmp	00123$
+      000184 02r02rA9         [24]  578 	ljmp	00123$
                                     579 ;	scsi.c:105: case CUSTOM_IPEEK:
       000187                        580 00112$:
                                     581 ;	scsi.c:107: usb_buffer[0] = IVAL(scsi_cdb[2]);
@@ -589,7 +589,7 @@
       000193 90 00 01         [24]  589 	mov	dptr,#0x0001
       000196 12r00r00         [24]  590 	lcall	_SendData1
                                     591 ;	scsi.c:109: break;
-      000199 02r02rB3         [24]  592 	ljmp	00123$
+      000199 02r02rA9         [24]  592 	ljmp	00123$
                                     593 ;	scsi.c:111: case CUSTOM_IPOKE:
       00019C                        594 00113$:
                                     595 ;	scsi.c:113: IVAL(scsi_cdb[2]) = scsi_cdb[3];
@@ -600,7 +600,7 @@
       0001A3 90 00 01         [24]  600 	mov	dptr,#0x0001
       0001A6 12r00r00         [24]  601 	lcall	_SendData1
                                     602 ;	scsi.c:115: break;
-      0001A9 02r02rB3         [24]  603 	ljmp	00123$
+      0001A9 02r02rA9         [24]  603 	ljmp	00123$
                                     604 ;	scsi.c:117: case VENDOR_CHIPID:
       0001AC                        605 00114$:
                                     606 ;	scsi.c:120: memset(usb_buffer, 0x00, 0x200);
@@ -630,165 +630,159 @@
       0001D2                        630 00115$:
       0001D2 90 F4 1E         [24]  631 	mov	dptr,#0xf41e
       0001D5 E0               [24]  632 	movx	a,@dptr
-      0001D6 FF               [12]  633 	mov	r7,a
-      0001D7 30 E0 F8         [24]  634 	jnb	acc.0,00115$
-                                    635 ;	scsi.c:134: XVAL(0xF400) = 0x90;
-      0001DA 90 F4 00         [24]  636 	mov	dptr,#0xf400
-      0001DD 74 90            [12]  637 	mov	a,#0x90
-      0001DF F0               [24]  638 	movx	@dptr,a
-                                    639 ;	scsi.c:135: XVAL(0xF404) = 0x00;
-      0001E0 90 F4 04         [24]  640 	mov	dptr,#0xf404
-      0001E3 E4               [12]  641 	clr	a
-      0001E4 F0               [24]  642 	movx	@dptr,a
-                                    643 ;	scsi.c:136: for (i = 0; i < 6; i++)
-      0001E5 7E 00            [12]  644 	mov	r6,#0x00
-      0001E7 7F 00            [12]  645 	mov	r7,#0x00
-      0001E9                        646 00125$:
-                                    647 ;	scsi.c:138: usb_buffer[i] = XVAL(0xF408);
-      0001E9 8E 04            [24]  648 	mov	ar4,r6
-      0001EB 74s00            [12]  649 	mov	a,#(_usb_buffer >> 8)
-      0001ED 2F               [12]  650 	add	a,r7
-      0001EE FD               [12]  651 	mov	r5,a
-      0001EF 90 F4 08         [24]  652 	mov	dptr,#0xf408
-      0001F2 E0               [24]  653 	movx	a,@dptr
-      0001F3 FB               [12]  654 	mov	r3,a
-      0001F4 8C 82            [24]  655 	mov	dpl,r4
-      0001F6 8D 83            [24]  656 	mov	dph,r5
-      0001F8 F0               [24]  657 	movx	@dptr,a
-                                    658 ;	scsi.c:136: for (i = 0; i < 6; i++)
-      0001F9 0E               [12]  659 	inc	r6
-      0001FA BE 00 01         [24]  660 	cjne	r6,#0x00,00227$
-      0001FD 0F               [12]  661 	inc	r7
-      0001FE                        662 00227$:
-      0001FE C3               [12]  663 	clr	c
-      0001FF EE               [12]  664 	mov	a,r6
-      000200 94 06            [12]  665 	subb	a,#0x06
-      000202 EF               [12]  666 	mov	a,r7
-      000203 64 80            [12]  667 	xrl	a,#0x80
-      000205 94 80            [12]  668 	subb	a,#0x80
-      000207 40 E0            [24]  669 	jc	00125$
-                                    670 ;	scsi.c:141: SendData1(0x200, 0);
-      000209 75*00 00         [24]  671 	mov	_SendData1_PARM_2,#0x00
-      00020C 90 02 00         [24]  672 	mov	dptr,#0x0200
-      00020F 12r00r00         [24]  673 	lcall	_SendData1
-                                    674 ;	scsi.c:142: scsi_status = 0;
-      000212 75*00 00         [24]  675 	mov	_scsi_status,#0x00
-                                    676 ;	scsi.c:143: return 1;
-      000215 75 82 01         [24]  677 	mov	dpl,#0x01
-      000218 22               [24]  678 	ret
-                                    679 ;	scsi.c:145: case VENDOR_INFO: //get info
-      000219                        680 00119$:
-                                    681 ;	scsi.c:149: memset(usb_buffer, 0x00, 0x210);
-      000219 75*00 00         [24]  682 	mov	_memset_PARM_2,#0x00
-      00021C 75*00 10         [24]  683 	mov	_memset_PARM_3,#0x10
-      00021F 75*01 02         [24]  684 	mov	(_memset_PARM_3 + 1),#0x02
-      000222 90r00r00         [24]  685 	mov	dptr,#_usb_buffer
-      000225 75 F0 00         [24]  686 	mov	b,#0x00
-      000228 12r00r00         [24]  687 	lcall	_memset
-                                    688 ;	scsi.c:150: usb_buffer[0x094] = 0x00;
-      00022B 90r00r94         [24]  689 	mov	dptr,#(_usb_buffer + 0x0094)
-      00022E E4               [12]  690 	clr	a
-      00022F F0               [24]  691 	movx	@dptr,a
-                                    692 ;	scsi.c:151: usb_buffer[0x095] = 0x99;
-      000230 90r00r95         [24]  693 	mov	dptr,#(_usb_buffer + 0x0095)
-      000233 74 99            [12]  694 	mov	a,#0x99
-      000235 F0               [24]  695 	movx	@dptr,a
-                                    696 ;	scsi.c:152: usb_buffer[0x096] = 0x53;
-      000236 90r00r96         [24]  697 	mov	dptr,#(_usb_buffer + 0x0096)
-      000239 74 53            [12]  698 	mov	a,#0x53
-      00023B F0               [24]  699 	movx	@dptr,a
-                                    700 ;	scsi.c:153: usb_buffer[0x17A] = 'V';
-      00023C 90r01r7A         [24]  701 	mov	dptr,#(_usb_buffer + 0x017a)
-      00023F 74 56            [12]  702 	mov	a,#0x56
-      000241 F0               [24]  703 	movx	@dptr,a
-                                    704 ;	scsi.c:154: usb_buffer[0x17B] = 'R';
-      000242 90r01r7B         [24]  705 	mov	dptr,#(_usb_buffer + 0x017b)
-      000245 74 52            [12]  706 	mov	a,#0x52
-      000247 F0               [24]  707 	movx	@dptr,a
-                                    708 ;	scsi.c:155: usb_buffer[0x17E] = 0x23;
-      000248 90r01r7E         [24]  709 	mov	dptr,#(_usb_buffer + 0x017e)
-      00024B 74 23            [12]  710 	mov	a,#0x23
-      00024D F0               [24]  711 	movx	@dptr,a
-                                    712 ;	scsi.c:156: usb_buffer[0x17F] = 0x07;
-      00024E 90r01r7F         [24]  713 	mov	dptr,#(_usb_buffer + 0x017f)
-      000251 74 07            [12]  714 	mov	a,#0x07
-      000253 F0               [24]  715 	movx	@dptr,a
-                                    716 ;	scsi.c:157: usb_buffer[0x200] = 'I';
-      000254 90r02r00         [24]  717 	mov	dptr,#(_usb_buffer + 0x0200)
-      000257 74 49            [12]  718 	mov	a,#0x49
-      000259 F0               [24]  719 	movx	@dptr,a
-                                    720 ;	scsi.c:158: usb_buffer[0x201] = 'F';
-      00025A 90r02r01         [24]  721 	mov	dptr,#(_usb_buffer + 0x0201)
-      00025D 74 46            [12]  722 	mov	a,#0x46
-      00025F F0               [24]  723 	movx	@dptr,a
-                                    724 ;	scsi.c:159: SendData1(0x210, 0);
-      000260 75*00 00         [24]  725 	mov	_SendData1_PARM_2,#0x00
-      000263 90 02 10         [24]  726 	mov	dptr,#0x0210
-      000266 12r00r00         [24]  727 	lcall	_SendData1
-                                    728 ;	scsi.c:160: scsi_status = 0;
-      000269 75*00 00         [24]  729 	mov	_scsi_status,#0x00
-                                    730 ;	scsi.c:161: return 1;
-      00026C 75 82 01         [24]  731 	mov	dpl,#0x01
-                                    732 ;	scsi.c:163: case VENDOR_BOOT:
-      00026F 22               [24]  733 	ret
-      000270                        734 00120$:
-                                    735 ;	scsi.c:166: XVAL(0xFA14) = 0x07;
-      000270 90 FA 14         [24]  736 	mov	dptr,#0xfa14
-      000273 74 07            [12]  737 	mov	a,#0x07
-      000275 F0               [24]  738 	movx	@dptr,a
-                                    739 ;	scsi.c:167: XVAL(0xF747) &= 0xEF;
-      000276 90 F7 47         [24]  740 	mov	dptr,#0xf747
-      000279 E0               [24]  741 	movx	a,@dptr
-      00027A 54 EF            [12]  742 	anl	a,#0xef
-      00027C F0               [24]  743 	movx	@dptr,a
-                                    744 ;	scsi.c:168: XVAL(0xFA15) = 0x06;
-      00027D 90 FA 15         [24]  745 	mov	dptr,#0xfa15
-      000280 74 06            [12]  746 	mov	a,#0x06
-      000282 F0               [24]  747 	movx	@dptr,a
-                                    748 ;	scsi.c:169: XVAL(0xFA38) |= 0x01;
-      000283 90 FA 38         [24]  749 	mov	dptr,#0xfa38
-      000286 E0               [24]  750 	movx	a,@dptr
-      000287 FF               [12]  751 	mov	r7,a
-      000288 7E 00            [12]  752 	mov	r6,#0x00
-      00028A 43 07 01         [24]  753 	orl	ar7,#0x01
-      00028D 90 FA 38         [24]  754 	mov	dptr,#0xfa38
-      000290 EF               [12]  755 	mov	a,r7
-      000291 F0               [24]  756 	movx	@dptr,a
-                                    757 ;	scsi.c:170: XVAL(0xF08F) = 0x00;
-      000292 90 F0 8F         [24]  758 	mov	dptr,#0xf08f
-      000295 E4               [12]  759 	clr	a
-      000296 F0               [24]  760 	movx	@dptr,a
-                                    761 ;	scsi.c:171: XVAL(0xFA68) &= 0xF7;
-      000297 90 FA 68         [24]  762 	mov	dptr,#0xfa68
-      00029A E0               [24]  763 	movx	a,@dptr
-      00029B 54 F7            [12]  764 	anl	a,#0xf7
-      00029D F0               [24]  765 	movx	@dptr,a
-                                    766 ;	scsi.c:172: XVAL(0xFA6A) &= 0xF7;
-      00029E 90 FA 6A         [24]  767 	mov	dptr,#0xfa6a
-      0002A1 E0               [24]  768 	movx	a,@dptr
-      0002A2 54 F7            [12]  769 	anl	a,#0xf7
-      0002A4 F0               [24]  770 	movx	@dptr,a
-                                    771 ;	scsi.c:173: XVAL(0xFA48) &= 0xFE;
-      0002A5 90 FA 48         [24]  772 	mov	dptr,#0xfa48
-      0002A8 E0               [24]  773 	movx	a,@dptr
-      0002A9 54 FE            [12]  774 	anl	a,#0xfe
-      0002AB FF               [12]  775 	mov	r7,a
-      0002AC F0               [24]  776 	movx	@dptr,a
-                                    777 ;	scsi.c:174: break;
-                                    778 ;	scsi.c:176: default:
-      0002AD 80 04            [24]  779 	sjmp	00123$
-      0002AF                        780 00121$:
-                                    781 ;	scsi.c:179: return 0;
-      0002AF 75 82 00         [24]  782 	mov	dpl,#0x00
-                                    783 ;	scsi.c:183: default:
-      0002B2 22               [24]  784 	ret
-      0002B3                        785 00123$:
-                                    786 ;	scsi.c:186: return 0;
-      0002B3 75 82 00         [24]  787 	mov	dpl,#0x00
-                                    788 ;	scsi.c:188: }
-                                    789 ;	scsi.c:189: }
-      0002B6 22               [24]  790 	ret
-                                    791 	.area CSEG    (CODE)
-                                    792 	.area CONST   (CODE)
-                                    793 	.area XINIT   (CODE)
-                                    794 	.area CABS    (ABS,CODE)
+      0001D6 30 E0 F9         [24]  633 	jnb	acc.0,00115$
+                                    634 ;	scsi.c:134: XVAL(0xF400) = 0x90;
+      0001D9 90 F4 00         [24]  635 	mov	dptr,#0xf400
+      0001DC 74 90            [12]  636 	mov	a,#0x90
+      0001DE F0               [24]  637 	movx	@dptr,a
+                                    638 ;	scsi.c:135: XVAL(0xF404) = 0x00;
+      0001DF 90 F4 04         [24]  639 	mov	dptr,#0xf404
+      0001E2 E4               [12]  640 	clr	a
+      0001E3 F0               [24]  641 	movx	@dptr,a
+                                    642 ;	scsi.c:136: for (i = 0; i < 6; i++)
+      0001E4 7E 00            [12]  643 	mov	r6,#0x00
+      0001E6 7F 00            [12]  644 	mov	r7,#0x00
+      0001E8                        645 00125$:
+                                    646 ;	scsi.c:138: usb_buffer[i] = XVAL(0xF408);
+      0001E8 8E 04            [24]  647 	mov	ar4,r6
+      0001EA 74s00            [12]  648 	mov	a,#(_usb_buffer >> 8)
+      0001EC 2F               [12]  649 	add	a,r7
+      0001ED FD               [12]  650 	mov	r5,a
+      0001EE 90 F4 08         [24]  651 	mov	dptr,#0xf408
+      0001F1 E0               [24]  652 	movx	a,@dptr
+      0001F2 8C 82            [24]  653 	mov	dpl,r4
+      0001F4 8D 83            [24]  654 	mov	dph,r5
+      0001F6 F0               [24]  655 	movx	@dptr,a
+                                    656 ;	scsi.c:136: for (i = 0; i < 6; i++)
+      0001F7 0E               [12]  657 	inc	r6
+      0001F8 BE 00 01         [24]  658 	cjne	r6,#0x00,00227$
+      0001FB 0F               [12]  659 	inc	r7
+      0001FC                        660 00227$:
+      0001FC C3               [12]  661 	clr	c
+      0001FD EE               [12]  662 	mov	a,r6
+      0001FE 94 06            [12]  663 	subb	a,#0x06
+      000200 EF               [12]  664 	mov	a,r7
+      000201 64 80            [12]  665 	xrl	a,#0x80
+      000203 94 80            [12]  666 	subb	a,#0x80
+      000205 40 E1            [24]  667 	jc	00125$
+                                    668 ;	scsi.c:141: SendData1(0x200, 0);
+      000207 75*00 00         [24]  669 	mov	_SendData1_PARM_2,#0x00
+      00020A 90 02 00         [24]  670 	mov	dptr,#0x0200
+      00020D 12r00r00         [24]  671 	lcall	_SendData1
+                                    672 ;	scsi.c:142: scsi_status = 0;
+      000210 75*00 00         [24]  673 	mov	_scsi_status,#0x00
+                                    674 ;	scsi.c:143: return 1;
+      000213 75 82 01         [24]  675 	mov	dpl,#0x01
+      000216 22               [24]  676 	ret
+                                    677 ;	scsi.c:145: case VENDOR_INFO: //get info
+      000217                        678 00119$:
+                                    679 ;	scsi.c:149: memset(usb_buffer, 0x00, 0x210);
+      000217 75*00 00         [24]  680 	mov	_memset_PARM_2,#0x00
+      00021A 75*00 10         [24]  681 	mov	_memset_PARM_3,#0x10
+      00021D 75*01 02         [24]  682 	mov	(_memset_PARM_3 + 1),#0x02
+      000220 90r00r00         [24]  683 	mov	dptr,#_usb_buffer
+      000223 75 F0 00         [24]  684 	mov	b,#0x00
+      000226 12r00r00         [24]  685 	lcall	_memset
+                                    686 ;	scsi.c:150: usb_buffer[0x094] = 0x00;
+      000229 90r00r94         [24]  687 	mov	dptr,#(_usb_buffer + 0x0094)
+      00022C E4               [12]  688 	clr	a
+      00022D F0               [24]  689 	movx	@dptr,a
+                                    690 ;	scsi.c:151: usb_buffer[0x095] = 0x99;
+      00022E 90r00r95         [24]  691 	mov	dptr,#(_usb_buffer + 0x0095)
+      000231 74 99            [12]  692 	mov	a,#0x99
+      000233 F0               [24]  693 	movx	@dptr,a
+                                    694 ;	scsi.c:152: usb_buffer[0x096] = 0x53;
+      000234 90r00r96         [24]  695 	mov	dptr,#(_usb_buffer + 0x0096)
+      000237 74 53            [12]  696 	mov	a,#0x53
+      000239 F0               [24]  697 	movx	@dptr,a
+                                    698 ;	scsi.c:153: usb_buffer[0x17A] = 'V';
+      00023A 90r01r7A         [24]  699 	mov	dptr,#(_usb_buffer + 0x017a)
+      00023D 74 56            [12]  700 	mov	a,#0x56
+      00023F F0               [24]  701 	movx	@dptr,a
+                                    702 ;	scsi.c:154: usb_buffer[0x17B] = 'R';
+      000240 90r01r7B         [24]  703 	mov	dptr,#(_usb_buffer + 0x017b)
+      000243 74 52            [12]  704 	mov	a,#0x52
+      000245 F0               [24]  705 	movx	@dptr,a
+                                    706 ;	scsi.c:155: usb_buffer[0x17E] = 0x23;
+      000246 90r01r7E         [24]  707 	mov	dptr,#(_usb_buffer + 0x017e)
+      000249 74 23            [12]  708 	mov	a,#0x23
+      00024B F0               [24]  709 	movx	@dptr,a
+                                    710 ;	scsi.c:156: usb_buffer[0x17F] = 0x07;
+      00024C 90r01r7F         [24]  711 	mov	dptr,#(_usb_buffer + 0x017f)
+      00024F 74 07            [12]  712 	mov	a,#0x07
+      000251 F0               [24]  713 	movx	@dptr,a
+                                    714 ;	scsi.c:157: usb_buffer[0x200] = 'I';
+      000252 90r02r00         [24]  715 	mov	dptr,#(_usb_buffer + 0x0200)
+      000255 74 49            [12]  716 	mov	a,#0x49
+      000257 F0               [24]  717 	movx	@dptr,a
+                                    718 ;	scsi.c:158: usb_buffer[0x201] = 'F';
+      000258 90r02r01         [24]  719 	mov	dptr,#(_usb_buffer + 0x0201)
+      00025B 74 46            [12]  720 	mov	a,#0x46
+      00025D F0               [24]  721 	movx	@dptr,a
+                                    722 ;	scsi.c:159: SendData1(0x210, 0);
+      00025E 75*00 00         [24]  723 	mov	_SendData1_PARM_2,#0x00
+      000261 90 02 10         [24]  724 	mov	dptr,#0x0210
+      000264 12r00r00         [24]  725 	lcall	_SendData1
+                                    726 ;	scsi.c:160: scsi_status = 0;
+      000267 75*00 00         [24]  727 	mov	_scsi_status,#0x00
+                                    728 ;	scsi.c:161: return 1;
+      00026A 75 82 01         [24]  729 	mov	dpl,#0x01
+                                    730 ;	scsi.c:163: case VENDOR_BOOT:
+      00026D 22               [24]  731 	ret
+      00026E                        732 00120$:
+                                    733 ;	scsi.c:166: XVAL(0xFA14) = 0x07;
+      00026E 90 FA 14         [24]  734 	mov	dptr,#0xfa14
+      000271 74 07            [12]  735 	mov	a,#0x07
+      000273 F0               [24]  736 	movx	@dptr,a
+                                    737 ;	scsi.c:167: XVAL(0xF747) &= 0xEF;
+      000274 90 F7 47         [24]  738 	mov	dptr,#0xf747
+      000277 E0               [24]  739 	movx	a,@dptr
+      000278 54 EF            [12]  740 	anl	a,#0xef
+      00027A F0               [24]  741 	movx	@dptr,a
+                                    742 ;	scsi.c:168: XVAL(0xFA15) = 0x06;
+      00027B 90 FA 15         [24]  743 	mov	dptr,#0xfa15
+      00027E 74 06            [12]  744 	mov	a,#0x06
+      000280 F0               [24]  745 	movx	@dptr,a
+                                    746 ;	scsi.c:169: XVAL(0xFA38) |= 0x01;
+      000281 90 FA 38         [24]  747 	mov	dptr,#0xfa38
+      000284 E0               [24]  748 	movx	a,@dptr
+      000285 44 01            [12]  749 	orl	a,#0x01
+      000287 F0               [24]  750 	movx	@dptr,a
+                                    751 ;	scsi.c:170: XVAL(0xF08F) = 0x00;
+      000288 90 F0 8F         [24]  752 	mov	dptr,#0xf08f
+      00028B E4               [12]  753 	clr	a
+      00028C F0               [24]  754 	movx	@dptr,a
+                                    755 ;	scsi.c:171: XVAL(0xFA68) &= 0xF7;
+      00028D 90 FA 68         [24]  756 	mov	dptr,#0xfa68
+      000290 E0               [24]  757 	movx	a,@dptr
+      000291 54 F7            [12]  758 	anl	a,#0xf7
+      000293 F0               [24]  759 	movx	@dptr,a
+                                    760 ;	scsi.c:172: XVAL(0xFA6A) &= 0xF7;
+      000294 90 FA 6A         [24]  761 	mov	dptr,#0xfa6a
+      000297 E0               [24]  762 	movx	a,@dptr
+      000298 54 F7            [12]  763 	anl	a,#0xf7
+      00029A F0               [24]  764 	movx	@dptr,a
+                                    765 ;	scsi.c:173: XVAL(0xFA48) &= 0xFE;
+      00029B 90 FA 48         [24]  766 	mov	dptr,#0xfa48
+      00029E E0               [24]  767 	movx	a,@dptr
+      00029F 54 FE            [12]  768 	anl	a,#0xfe
+      0002A1 FF               [12]  769 	mov	r7,a
+      0002A2 F0               [24]  770 	movx	@dptr,a
+                                    771 ;	scsi.c:174: break;
+                                    772 ;	scsi.c:176: default:
+      0002A3 80 04            [24]  773 	sjmp	00123$
+      0002A5                        774 00121$:
+                                    775 ;	scsi.c:179: return 0;
+      0002A5 75 82 00         [24]  776 	mov	dpl,#0x00
+                                    777 ;	scsi.c:183: default:
+      0002A8 22               [24]  778 	ret
+      0002A9                        779 00123$:
+                                    780 ;	scsi.c:186: return 0;
+      0002A9 75 82 00         [24]  781 	mov	dpl,#0x00
+                                    782 ;	scsi.c:188: }
+                                    783 ;	scsi.c:189: }
+      0002AC 22               [24]  784 	ret
+                                    785 	.area CSEG    (CODE)
+                                    786 	.area CONST   (CODE)
+                                    787 	.area XINIT   (CODE)
+                                    788 	.area CABS    (ABS,CODE)

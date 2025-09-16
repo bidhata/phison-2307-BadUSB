@@ -1,10 +1,10 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
-                                      3 ; Version 3.7.1 #10443 (MINGW64)
+                                      3 ; Version 4.2.0 #13081 (Linux)
                                       4 ;--------------------------------------------------------
                                       5 	.module timers
                                       6 	.optsdcc -mmcs51 --model-small
-                                      7 	
+                                      7
                                       8 ;--------------------------------------------------------
                                       9 ; Public variables in this module
                                      10 ;--------------------------------------------------------
@@ -215,7 +215,7 @@
       000005                        215 _tmr1reload:
       000005                        216 	.ds 2
                                     217 ;--------------------------------------------------------
-                                    218 ; overlayable items in internal ram 
+                                    218 ; overlayable items in internal ram
                                     219 ;--------------------------------------------------------
                                     220 	.area	OSEG    (OVR,DATA)
                                     221 ;--------------------------------------------------------
@@ -345,7 +345,7 @@
                                     345 ;	timers.c:15: }
       00000C 32               [24]  346 	reti
                                     347 ;	eliminated unneeded mov psw,# (no regs used in bank)
-                                    348 ;	eliminated unneeded push/pop psw
+                                    348 ;	eliminated unneeded push/pop not_psw
                                     349 ;	eliminated unneeded push/pop dpl
                                     350 ;	eliminated unneeded push/pop dph
                                     351 ;	eliminated unneeded push/pop b
@@ -366,7 +366,7 @@
                                     366 ;	timers.c:21: tmr1reload = 0xF63C;
       000015 75*05 3C         [24]  367 	mov	_tmr1reload,#0x3c
       000018 75*06 F6         [24]  368 	mov	(_tmr1reload + 1),#0xf6
-      00001B 80 23            [24]  369 	sjmp	00103$
+      00001B 80 25            [24]  369 	sjmp	00103$
       00001D                        370 00102$:
                                     371 ;	timers.c:25: tmr1reload = 0-(2500/(XVAL(0xFA60)+2));
       00001D 90 FA 60         [24]  372 	mov	dptr,#0xfa60
@@ -386,227 +386,223 @@
       000037 C3               [12]  386 	clr	c
       000038 E4               [12]  387 	clr	a
       000039 9E               [12]  388 	subb	a,r6
-      00003A F5*05            [12]  389 	mov	_tmr1reload,a
-      00003C E4               [12]  390 	clr	a
-      00003D 9F               [12]  391 	subb	a,r7
-      00003E F5*06            [12]  392 	mov	(_tmr1reload + 1),a
-      000040                        393 00103$:
-                                    394 ;	timers.c:28: tmr1count = 0;
-      000040 75*04 00         [24]  395 	mov	_tmr1count,#0x00
-                                    396 ;	timers.c:29: TR1 = 0;
-                                    397 ;	assignBit
-      000043 C2 8E            [12]  398 	clr	_TR1
-                                    399 ;	timers.c:30: ET1 = 1;
-                                    400 ;	assignBit
-      000045 D2 AB            [12]  401 	setb	_ET1
-                                    402 ;	timers.c:31: TMOD = TMOD & 0x0F | 0x10;
-      000047 AE 89            [24]  403 	mov	r6,_TMOD
-      000049 53 06 0F         [24]  404 	anl	ar6,#0x0f
-      00004C 43 06 10         [24]  405 	orl	ar6,#0x10
-      00004F 8E 89            [24]  406 	mov	_TMOD,r6
-                                    407 ;	timers.c:32: }
-      000051 22               [24]  408 	ret
-                                    409 ;------------------------------------------------------------
-                                    410 ;Allocation info for local variables in function 'GetTickCount'
+      00003A FE               [12]  389 	mov	r6,a
+      00003B E4               [12]  390 	clr	a
+      00003C 9F               [12]  391 	subb	a,r7
+      00003D FF               [12]  392 	mov	r7,a
+      00003E 8E*05            [24]  393 	mov	_tmr1reload,r6
+      000040 8F*06            [24]  394 	mov	(_tmr1reload + 1),r7
+      000042                        395 00103$:
+                                    396 ;	timers.c:28: tmr1count = 0;
+      000042 75*04 00         [24]  397 	mov	_tmr1count,#0x00
+                                    398 ;	timers.c:29: TR1 = 0;
+                                    399 ;	assignBit
+      000045 C2 8E            [12]  400 	clr	_TR1
+                                    401 ;	timers.c:30: ET1 = 1;
+                                    402 ;	assignBit
+      000047 D2 AB            [12]  403 	setb	_ET1
+                                    404 ;	timers.c:31: TMOD = TMOD & 0x0F | 0x10;
+      000049 E5 89            [12]  405 	mov	a,_TMOD
+      00004B 54 0F            [12]  406 	anl	a,#0x0f
+      00004D 44 10            [12]  407 	orl	a,#0x10
+      00004F F5 89            [12]  408 	mov	_TMOD,a
+                                    409 ;	timers.c:32: }
+      000051 22               [24]  410 	ret
                                     411 ;------------------------------------------------------------
-                                    412 ;	timers.c:34: BYTE GetTickCount(void)
-                                    413 ;	-----------------------------------------
-                                    414 ;	 function GetTickCount
+                                    412 ;Allocation info for local variables in function 'GetTickCount'
+                                    413 ;------------------------------------------------------------
+                                    414 ;	timers.c:34: BYTE GetTickCount(void)
                                     415 ;	-----------------------------------------
-      000052                        416 _GetTickCount:
-                                    417 ;	timers.c:36: return tmr1count;
-      000052 85*04 82         [24]  418 	mov	dpl,_tmr1count
-                                    419 ;	timers.c:37: }
-      000055 22               [24]  420 	ret
-                                    421 ;------------------------------------------------------------
-                                    422 ;Allocation info for local variables in function 'tmr0isr'
+                                    416 ;	 function GetTickCount
+                                    417 ;	-----------------------------------------
+      000052                        418 _GetTickCount:
+                                    419 ;	timers.c:36: return tmr1count;
+      000052 85*04 82         [24]  420 	mov	dpl,_tmr1count
+                                    421 ;	timers.c:37: }
+      000055 22               [24]  422 	ret
                                     423 ;------------------------------------------------------------
-                                    424 ;	timers.c:39: void tmr0isr(void) __interrupt TMR0_VECT
-                                    425 ;	-----------------------------------------
-                                    426 ;	 function tmr0isr
+                                    424 ;Allocation info for local variables in function 'tmr0isr'
+                                    425 ;------------------------------------------------------------
+                                    426 ;	timers.c:39: void tmr0isr(void) __interrupt TMR0_VECT
                                     427 ;	-----------------------------------------
-      000056                        428 _tmr0isr:
-      000056 C0 E0            [24]  429 	push	acc
-      000058 C0 82            [24]  430 	push	dpl
-      00005A C0 83            [24]  431 	push	dph
-      00005C C0 07            [24]  432 	push	ar7
-      00005E C0 06            [24]  433 	push	ar6
-      000060 C0 D0            [24]  434 	push	psw
-      000062 75 D0 00         [24]  435 	mov	psw,#0x00
-                                    436 ;	timers.c:42: TR0 = 0;
-                                    437 ;	assignBit
-      000065 C2 8C            [12]  438 	clr	_TR0
-                                    439 ;	timers.c:43: TL0 = 0xE6;
-      000067 75 8A E6         [24]  440 	mov	_TL0,#0xe6
-                                    441 ;	timers.c:44: TH0 = 0x96;
-      00006A 75 8C 96         [24]  442 	mov	_TH0,#0x96
-                                    443 ;	timers.c:45: TR0 = 1;
-                                    444 ;	assignBit
-      00006D D2 8C            [12]  445 	setb	_TR0
-                                    446 ;	timers.c:47: if ((GPIO0OUT & 2) == 0) //turned off
-      00006F 90 FA 15         [24]  447 	mov	dptr,#_GPIO0OUT
-      000072 E0               [24]  448 	movx	a,@dptr
-      000073 20 E1 02         [24]  449 	jb	acc.1,00102$
-                                    450 ;	timers.c:49: return;
-      000076 80 58            [24]  451 	sjmp	00114$
-      000078                        452 00102$:
-                                    453 ;	timers.c:52: tmr0count++;
-      000078 05*00            [12]  454 	inc	_tmr0count
-                                    455 ;	timers.c:53: led_ticks++;
-      00007A 05*01            [12]  456 	inc	_led_ticks
-                                    457 ;	timers.c:54: if (led_ticks < led_tick_threshold)
-      00007C C3               [12]  458 	clr	c
-      00007D E5*01            [12]  459 	mov	a,_led_ticks
-      00007F 95*03            [12]  460 	subb	a,_led_tick_threshold
-      000081 50 02            [24]  461 	jnc	00104$
-                                    462 ;	timers.c:56: return;
-      000083 80 4B            [24]  463 	sjmp	00114$
-      000085                        464 00104$:
-                                    465 ;	timers.c:59: led_ticks = 0;
-      000085 75*01 00         [24]  466 	mov	_led_ticks,#0x00
-                                    467 ;	timers.c:60: if (led_timer >= 31)
-      000088 74 E1            [12]  468 	mov	a,#0x100 - 0x1f
-      00008A 25*02            [12]  469 	add	a,_led_timer
-      00008C 50 0B            [24]  470 	jnc	00106$
-                                    471 ;	timers.c:62: GPIO0OUT = 1;
-      00008E 90 FA 15         [24]  472 	mov	dptr,#_GPIO0OUT
-      000091 74 01            [12]  473 	mov	a,#0x01
-      000093 F0               [24]  474 	movx	@dptr,a
-                                    475 ;	timers.c:63: led_timer = 0;		
-      000094 75*02 00         [24]  476 	mov	_led_timer,#0x00
-                                    477 ;	timers.c:64: return;
-      000097 80 37            [24]  478 	sjmp	00114$
-      000099                        479 00106$:
-                                    480 ;	timers.c:67: if (led_timer >= 10)
-      000099 74 F6            [12]  481 	mov	a,#0x100 - 0x0a
-      00009B 25*02            [12]  482 	add	a,_led_timer
-      00009D 50 0B            [24]  483 	jnc	00108$
-                                    484 ;	timers.c:69: GPIO0OUT = ~GPIO0OUT;
-      00009F 90 FA 15         [24]  485 	mov	dptr,#_GPIO0OUT
-      0000A2 E0               [24]  486 	movx	a,@dptr
-      0000A3 FF               [12]  487 	mov	r7,a
-      0000A4 F4               [12]  488 	cpl	a
-      0000A5 F0               [24]  489 	movx	@dptr,a
-                                    490 ;	timers.c:70: led_timer++;
-      0000A6 05*02            [12]  491 	inc	_led_timer
-                                    492 ;	timers.c:71: return;
-      0000A8 80 26            [24]  493 	sjmp	00114$
-      0000AA                        494 00108$:
-                                    495 ;	timers.c:74: if (led_timer == 0)
-      0000AA E5*02            [12]  496 	mov	a,_led_timer
-      0000AC 70 02            [24]  497 	jnz	00110$
-                                    498 ;	timers.c:76: return;
-      0000AE 80 20            [24]  499 	sjmp	00114$
-      0000B0                        500 00110$:
-                                    501 ;	timers.c:79: if (GPIO0OUT & 1)
-      0000B0 90 FA 15         [24]  502 	mov	dptr,#_GPIO0OUT
-      0000B3 E0               [24]  503 	movx	a,@dptr
-      0000B4 30 E0 0A         [24]  504 	jnb	acc.0,00112$
-                                    505 ;	timers.c:81: GPIO0OUT &= 0xFE;
-      0000B7 90 FA 15         [24]  506 	mov	dptr,#_GPIO0OUT
-      0000BA E0               [24]  507 	movx	a,@dptr
-      0000BB 53 E0 FE         [24]  508 	anl	acc,#0xfe
-      0000BE F0               [24]  509 	movx	@dptr,a
-      0000BF 80 0F            [24]  510 	sjmp	00114$
-      0000C1                        511 00112$:
-                                    512 ;	timers.c:85: GPIO0OUT |= 1;
-      0000C1 90 FA 15         [24]  513 	mov	dptr,#_GPIO0OUT
-      0000C4 E0               [24]  514 	movx	a,@dptr
-      0000C5 FF               [12]  515 	mov	r7,a
-      0000C6 7E 00            [12]  516 	mov	r6,#0x00
-      0000C8 43 07 01         [24]  517 	orl	ar7,#0x01
-      0000CB 90 FA 15         [24]  518 	mov	dptr,#_GPIO0OUT
-      0000CE EF               [12]  519 	mov	a,r7
-      0000CF F0               [24]  520 	movx	@dptr,a
-      0000D0                        521 00114$:
-                                    522 ;	timers.c:87: }
-      0000D0 D0 D0            [24]  523 	pop	psw
-      0000D2 D0 06            [24]  524 	pop	ar6
-      0000D4 D0 07            [24]  525 	pop	ar7
-      0000D6 D0 83            [24]  526 	pop	dph
-      0000D8 D0 82            [24]  527 	pop	dpl
-      0000DA D0 E0            [24]  528 	pop	acc
-      0000DC 32               [24]  529 	reti
-                                    530 ;	eliminated unneeded push/pop b
+                                    428 ;	 function tmr0isr
+                                    429 ;	-----------------------------------------
+      000056                        430 _tmr0isr:
+      000056 C0 E0            [24]  431 	push	acc
+      000058 C0 82            [24]  432 	push	dpl
+      00005A C0 83            [24]  433 	push	dph
+      00005C C0 07            [24]  434 	push	ar7
+      00005E C0 D0            [24]  435 	push	psw
+      000060 75 D0 00         [24]  436 	mov	psw,#0x00
+                                    437 ;	timers.c:42: TR0 = 0;
+                                    438 ;	assignBit
+      000063 C2 8C            [12]  439 	clr	_TR0
+                                    440 ;	timers.c:43: TL0 = 0xE6;
+      000065 75 8A E6         [24]  441 	mov	_TL0,#0xe6
+                                    442 ;	timers.c:44: TH0 = 0x96;
+      000068 75 8C 96         [24]  443 	mov	_TH0,#0x96
+                                    444 ;	timers.c:45: TR0 = 1;
+                                    445 ;	assignBit
+      00006B D2 8C            [12]  446 	setb	_TR0
+                                    447 ;	timers.c:47: if ((GPIO0OUT & 2) == 0) //turned off
+      00006D 90 FA 15         [24]  448 	mov	dptr,#_GPIO0OUT
+      000070 E0               [24]  449 	movx	a,@dptr
+      000071 20 E1 02         [24]  450 	jb	acc.1,00102$
+                                    451 ;	timers.c:49: return;
+      000074 80 51            [24]  452 	sjmp	00114$
+      000076                        453 00102$:
+                                    454 ;	timers.c:52: tmr0count++;
+      000076 05*00            [12]  455 	inc	_tmr0count
+                                    456 ;	timers.c:53: led_ticks++;
+      000078 05*01            [12]  457 	inc	_led_ticks
+                                    458 ;	timers.c:54: if (led_ticks < led_tick_threshold)
+      00007A C3               [12]  459 	clr	c
+      00007B E5*01            [12]  460 	mov	a,_led_ticks
+      00007D 95*03            [12]  461 	subb	a,_led_tick_threshold
+      00007F 50 02            [24]  462 	jnc	00104$
+                                    463 ;	timers.c:56: return;
+      000081 80 44            [24]  464 	sjmp	00114$
+      000083                        465 00104$:
+                                    466 ;	timers.c:59: led_ticks = 0;
+      000083 75*01 00         [24]  467 	mov	_led_ticks,#0x00
+                                    468 ;	timers.c:60: if (led_timer >= 31)
+      000086 74 E1            [12]  469 	mov	a,#0x100 - 0x1f
+      000088 25*02            [12]  470 	add	a,_led_timer
+      00008A 50 0B            [24]  471 	jnc	00106$
+                                    472 ;	timers.c:62: GPIO0OUT = 1;
+      00008C 90 FA 15         [24]  473 	mov	dptr,#_GPIO0OUT
+      00008F 74 01            [12]  474 	mov	a,#0x01
+      000091 F0               [24]  475 	movx	@dptr,a
+                                    476 ;	timers.c:63: led_timer = 0;
+      000092 75*02 00         [24]  477 	mov	_led_timer,#0x00
+                                    478 ;	timers.c:64: return;
+      000095 80 30            [24]  479 	sjmp	00114$
+      000097                        480 00106$:
+                                    481 ;	timers.c:67: if (led_timer >= 10)
+      000097 74 F6            [12]  482 	mov	a,#0x100 - 0x0a
+      000099 25*02            [12]  483 	add	a,_led_timer
+      00009B 50 0B            [24]  484 	jnc	00108$
+                                    485 ;	timers.c:69: GPIO0OUT = ~GPIO0OUT;
+      00009D 90 FA 15         [24]  486 	mov	dptr,#_GPIO0OUT
+      0000A0 E0               [24]  487 	movx	a,@dptr
+      0000A1 FF               [12]  488 	mov	r7,a
+      0000A2 F4               [12]  489 	cpl	a
+      0000A3 F0               [24]  490 	movx	@dptr,a
+                                    491 ;	timers.c:70: led_timer++;
+      0000A4 05*02            [12]  492 	inc	_led_timer
+                                    493 ;	timers.c:71: return;
+      0000A6 80 1F            [24]  494 	sjmp	00114$
+      0000A8                        495 00108$:
+                                    496 ;	timers.c:74: if (led_timer == 0)
+      0000A8 E5*02            [12]  497 	mov	a,_led_timer
+      0000AA 70 02            [24]  498 	jnz	00110$
+                                    499 ;	timers.c:76: return;
+      0000AC 80 19            [24]  500 	sjmp	00114$
+      0000AE                        501 00110$:
+                                    502 ;	timers.c:79: if (GPIO0OUT & 1)
+      0000AE 90 FA 15         [24]  503 	mov	dptr,#_GPIO0OUT
+      0000B1 E0               [24]  504 	movx	a,@dptr
+      0000B2 30 E0 0A         [24]  505 	jnb	acc.0,00112$
+                                    506 ;	timers.c:81: GPIO0OUT &= 0xFE;
+      0000B5 90 FA 15         [24]  507 	mov	dptr,#_GPIO0OUT
+      0000B8 E0               [24]  508 	movx	a,@dptr
+      0000B9 53 E0 FE         [24]  509 	anl	acc,#0xfe
+      0000BC F0               [24]  510 	movx	@dptr,a
+      0000BD 80 08            [24]  511 	sjmp	00114$
+      0000BF                        512 00112$:
+                                    513 ;	timers.c:85: GPIO0OUT |= 1;
+      0000BF 90 FA 15         [24]  514 	mov	dptr,#_GPIO0OUT
+      0000C2 E0               [24]  515 	movx	a,@dptr
+      0000C3 43 E0 01         [24]  516 	orl	acc,#0x01
+      0000C6 F0               [24]  517 	movx	@dptr,a
+      0000C7                        518 00114$:
+                                    519 ;	timers.c:87: }
+      0000C7 D0 D0            [24]  520 	pop	psw
+      0000C9 D0 07            [24]  521 	pop	ar7
+      0000CB D0 83            [24]  522 	pop	dph
+      0000CD D0 82            [24]  523 	pop	dpl
+      0000CF D0 E0            [24]  524 	pop	acc
+      0000D1 32               [24]  525 	reti
+                                    526 ;	eliminated unneeded push/pop b
+                                    527 ;------------------------------------------------------------
+                                    528 ;Allocation info for local variables in function 'SetLEDThreshold'
+                                    529 ;------------------------------------------------------------
+                                    530 ;threshold                 Allocated to registers r6 r7
                                     531 ;------------------------------------------------------------
-                                    532 ;Allocation info for local variables in function 'SetLEDThreshold'
-                                    533 ;------------------------------------------------------------
-                                    534 ;threshold                 Allocated to registers r6 r7 
-                                    535 ;------------------------------------------------------------
-                                    536 ;	timers.c:89: void SetLEDThreshold(int threshold)
-                                    537 ;	-----------------------------------------
-                                    538 ;	 function SetLEDThreshold
-                                    539 ;	-----------------------------------------
-      0000DD                        540 _SetLEDThreshold:
-      0000DD AE 82            [24]  541 	mov	r6,dpl
-                                    542 ;	timers.c:91: led_tick_threshold = threshold;
-      0000DF 8E*03            [24]  543 	mov	_led_tick_threshold,r6
-                                    544 ;	timers.c:92: }
-      0000E1 22               [24]  545 	ret
-                                    546 ;------------------------------------------------------------
-                                    547 ;Allocation info for local variables in function 'InitLED'
-                                    548 ;------------------------------------------------------------
-                                    549 ;	timers.c:94: void InitLED(void)
-                                    550 ;	-----------------------------------------
-                                    551 ;	 function InitLED
-                                    552 ;	-----------------------------------------
-      0000E2                        553 _InitLED:
-                                    554 ;	timers.c:96: led_tick_threshold = 100;
-      0000E2 75*03 64         [24]  555 	mov	_led_tick_threshold,#0x64
-                                    556 ;	timers.c:97: tmr0count = 0;
-      0000E5 75*00 00         [24]  557 	mov	_tmr0count,#0x00
-                                    558 ;	timers.c:98: GPIO0OUT = 3;
-      0000E8 90 FA 15         [24]  559 	mov	dptr,#_GPIO0OUT
-      0000EB 74 03            [12]  560 	mov	a,#0x03
-      0000ED F0               [24]  561 	movx	@dptr,a
-                                    562 ;	timers.c:99: led_ticks = 0;
-      0000EE 75*01 00         [24]  563 	mov	_led_ticks,#0x00
-                                    564 ;	timers.c:100: led_timer = 0;
-      0000F1 75*02 00         [24]  565 	mov	_led_timer,#0x00
-                                    566 ;	timers.c:101: EA = 1;
-                                    567 ;	assignBit
-      0000F4 D2 AF            [12]  568 	setb	_EA
-                                    569 ;	timers.c:102: ET0 = 1;
-                                    570 ;	assignBit
-      0000F6 D2 A9            [12]  571 	setb	_ET0
-                                    572 ;	timers.c:103: TR0 = 1;
-                                    573 ;	assignBit
-      0000F8 D2 8C            [12]  574 	setb	_TR0
-                                    575 ;	timers.c:104: }
-      0000FA 22               [24]  576 	ret
-                                    577 ;------------------------------------------------------------
-                                    578 ;Allocation info for local variables in function 'LEDBlink'
-                                    579 ;------------------------------------------------------------
-                                    580 ;	timers.c:106: void LEDBlink(void)
-                                    581 ;	-----------------------------------------
-                                    582 ;	 function LEDBlink
-                                    583 ;	-----------------------------------------
-      0000FB                        584 _LEDBlink:
-                                    585 ;	timers.c:108: GPIO0OUT = 2;
-      0000FB 90 FA 15         [24]  586 	mov	dptr,#_GPIO0OUT
-      0000FE 74 02            [12]  587 	mov	a,#0x02
-      000100 F0               [24]  588 	movx	@dptr,a
-                                    589 ;	timers.c:109: led_timer = 1;
-      000101 75*02 01         [24]  590 	mov	_led_timer,#0x01
-                                    591 ;	timers.c:110: }
-      000104 22               [24]  592 	ret
-                                    593 ;------------------------------------------------------------
-                                    594 ;Allocation info for local variables in function 'LEDOff'
-                                    595 ;------------------------------------------------------------
-                                    596 ;	timers.c:112: void LEDOff(void)
-                                    597 ;	-----------------------------------------
-                                    598 ;	 function LEDOff
-                                    599 ;	-----------------------------------------
-      000105                        600 _LEDOff:
-                                    601 ;	timers.c:114: GPIO0OUT = 3;
-      000105 90 FA 15         [24]  602 	mov	dptr,#_GPIO0OUT
-      000108 74 03            [12]  603 	mov	a,#0x03
-      00010A F0               [24]  604 	movx	@dptr,a
-                                    605 ;	timers.c:115: led_timer = 0;
-      00010B 75*02 00         [24]  606 	mov	_led_timer,#0x00
-                                    607 ;	timers.c:116: }
-      00010E 22               [24]  608 	ret
-                                    609 	.area CSEG    (CODE)
-                                    610 	.area CONST   (CODE)
-                                    611 	.area XINIT   (CODE)
-                                    612 	.area CABS    (ABS,CODE)
+                                    532 ;	timers.c:89: void SetLEDThreshold(int threshold)
+                                    533 ;	-----------------------------------------
+                                    534 ;	 function SetLEDThreshold
+                                    535 ;	-----------------------------------------
+      0000D2                        536 _SetLEDThreshold:
+      0000D2 AE 82            [24]  537 	mov	r6,dpl
+                                    538 ;	timers.c:91: led_tick_threshold = threshold;
+      0000D4 8E*03            [24]  539 	mov	_led_tick_threshold,r6
+                                    540 ;	timers.c:92: }
+      0000D6 22               [24]  541 	ret
+                                    542 ;------------------------------------------------------------
+                                    543 ;Allocation info for local variables in function 'InitLED'
+                                    544 ;------------------------------------------------------------
+                                    545 ;	timers.c:94: void InitLED(void)
+                                    546 ;	-----------------------------------------
+                                    547 ;	 function InitLED
+                                    548 ;	-----------------------------------------
+      0000D7                        549 _InitLED:
+                                    550 ;	timers.c:96: led_tick_threshold = 100;
+      0000D7 75*03 64         [24]  551 	mov	_led_tick_threshold,#0x64
+                                    552 ;	timers.c:97: tmr0count = 0;
+      0000DA 75*00 00         [24]  553 	mov	_tmr0count,#0x00
+                                    554 ;	timers.c:98: GPIO0OUT = 3;
+      0000DD 90 FA 15         [24]  555 	mov	dptr,#_GPIO0OUT
+      0000E0 74 03            [12]  556 	mov	a,#0x03
+      0000E2 F0               [24]  557 	movx	@dptr,a
+                                    558 ;	timers.c:99: led_ticks = 0;
+      0000E3 75*01 00         [24]  559 	mov	_led_ticks,#0x00
+                                    560 ;	timers.c:100: led_timer = 0;
+      0000E6 75*02 00         [24]  561 	mov	_led_timer,#0x00
+                                    562 ;	timers.c:101: EA = 1;
+                                    563 ;	assignBit
+      0000E9 D2 AF            [12]  564 	setb	_EA
+                                    565 ;	timers.c:102: ET0 = 1;
+                                    566 ;	assignBit
+      0000EB D2 A9            [12]  567 	setb	_ET0
+                                    568 ;	timers.c:103: TR0 = 1;
+                                    569 ;	assignBit
+      0000ED D2 8C            [12]  570 	setb	_TR0
+                                    571 ;	timers.c:104: }
+      0000EF 22               [24]  572 	ret
+                                    573 ;------------------------------------------------------------
+                                    574 ;Allocation info for local variables in function 'LEDBlink'
+                                    575 ;------------------------------------------------------------
+                                    576 ;	timers.c:106: void LEDBlink(void)
+                                    577 ;	-----------------------------------------
+                                    578 ;	 function LEDBlink
+                                    579 ;	-----------------------------------------
+      0000F0                        580 _LEDBlink:
+                                    581 ;	timers.c:108: GPIO0OUT = 2;
+      0000F0 90 FA 15         [24]  582 	mov	dptr,#_GPIO0OUT
+      0000F3 74 02            [12]  583 	mov	a,#0x02
+      0000F5 F0               [24]  584 	movx	@dptr,a
+                                    585 ;	timers.c:109: led_timer = 1;
+      0000F6 75*02 01         [24]  586 	mov	_led_timer,#0x01
+                                    587 ;	timers.c:110: }
+      0000F9 22               [24]  588 	ret
+                                    589 ;------------------------------------------------------------
+                                    590 ;Allocation info for local variables in function 'LEDOff'
+                                    591 ;------------------------------------------------------------
+                                    592 ;	timers.c:112: void LEDOff(void)
+                                    593 ;	-----------------------------------------
+                                    594 ;	 function LEDOff
+                                    595 ;	-----------------------------------------
+      0000FA                        596 _LEDOff:
+                                    597 ;	timers.c:114: GPIO0OUT = 3;
+      0000FA 90 FA 15         [24]  598 	mov	dptr,#_GPIO0OUT
+      0000FD 74 03            [12]  599 	mov	a,#0x03
+      0000FF F0               [24]  600 	movx	@dptr,a
+                                    601 ;	timers.c:115: led_timer = 0;
+      000100 75*02 00         [24]  602 	mov	_led_timer,#0x00
+                                    603 ;	timers.c:116: }
+      000103 22               [24]  604 	ret
+                                    605 	.area CSEG    (CODE)
+                                    606 	.area CONST   (CODE)
+                                    607 	.area XINIT   (CODE)
+                                    608 	.area CABS    (ABS,CODE)

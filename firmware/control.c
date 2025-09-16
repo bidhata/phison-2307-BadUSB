@@ -53,12 +53,13 @@ static BYTE GetDescriptor()
 	{
 		case 0x01:
 		{
-			for (i = 0; i < 0x12; i++)
+			total = wLength < sizeof(deviceDescriptor) ? wLength : sizeof(deviceDescriptor);
+			for (i = 0; i < total; i++)
 			{
 				EP0.fifo = deviceDescriptor[i];
 			}
 
-			SendControlResponse(wLength < 0x12 ? wLength : 0x12);
+			SendControlResponse(total);
 			ret = TRUE;
 
 			break;
@@ -78,24 +79,26 @@ static BYTE GetDescriptor()
 		}
 		case 0x06:
 		{
-			for (i = 0; i < sizeof(deviceQualifierDescriptor); i++)
+			total = wLength < sizeof(deviceQualifierDescriptor) ? wLength : sizeof(deviceQualifierDescriptor);
+			for (i = 0; i < total; i++)
 			{
 				EP0.fifo = deviceQualifierDescriptor[i];
 			}
 			
-			SendControlResponse(wLength < sizeof(deviceQualifierDescriptor) ? wLength : sizeof(deviceQualifierDescriptor));
+			SendControlResponse(total);
 			ret = TRUE;
 			
 			break;
 		}
 		case 0x22:
 		{
-			for (i = 0; i < sizeof(HIDreportDescriptor); i++)
+			total = wLength < sizeof(HIDreportDescriptor) ? wLength : sizeof(HIDreportDescriptor);
+			for (i = 0; i < total; i++)
 			{
 				EP0.fifo = HIDreportDescriptor[i];
 			}
 			
-			SendControlResponse(wLength < sizeof(HIDreportDescriptor) ? wLength : sizeof(HIDreportDescriptor));
+			SendControlResponse(total);
 			ret = TRUE;
 		
 			break;

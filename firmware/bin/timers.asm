@@ -1,10 +1,10 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.7.1 #10443 (MINGW64)
+; Version 4.2.0 #13081 (Linux)
 ;--------------------------------------------------------
 	.module timers
 	.optsdcc -mmcs51 --model-small
-	
+
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
@@ -215,7 +215,7 @@ _tmr1count:
 _tmr1reload:
 	.ds 2
 ;--------------------------------------------------------
-; overlayable items in internal ram 
+; overlayable items in internal ram
 ;--------------------------------------------------------
 	.area	OSEG    (OVR,DATA)
 ;--------------------------------------------------------
@@ -345,7 +345,7 @@ _tmr1isr:
 ;	timers.c:15: }
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
-;	eliminated unneeded push/pop psw
+;	eliminated unneeded push/pop not_psw
 ;	eliminated unneeded push/pop dpl
 ;	eliminated unneeded push/pop dph
 ;	eliminated unneeded push/pop b
@@ -386,10 +386,12 @@ _InitTicks:
 	clr	c
 	clr	a
 	subb	a,r6
-	mov	_tmr1reload,a
+	mov	r6,a
 	clr	a
 	subb	a,r7
-	mov	(_tmr1reload + 1),a
+	mov	r7,a
+	mov	_tmr1reload,r6
+	mov	(_tmr1reload + 1),r7
 00103$:
 ;	timers.c:28: tmr1count = 0;
 	mov	_tmr1count,#0x00
@@ -400,10 +402,10 @@ _InitTicks:
 ;	assignBit
 	setb	_ET1
 ;	timers.c:31: TMOD = TMOD & 0x0F | 0x10;
-	mov	r6,_TMOD
-	anl	ar6,#0x0f
-	orl	ar6,#0x10
-	mov	_TMOD,r6
+	mov	a,_TMOD
+	anl	a,#0x0f
+	orl	a,#0x10
+	mov	_TMOD,a
 ;	timers.c:32: }
 	ret
 ;------------------------------------------------------------
@@ -430,7 +432,6 @@ _tmr0isr:
 	push	dpl
 	push	dph
 	push	ar7
-	push	ar6
 	push	psw
 	mov	psw,#0x00
 ;	timers.c:42: TR0 = 0;
@@ -472,7 +473,7 @@ _tmr0isr:
 	mov	dptr,#_GPIO0OUT
 	mov	a,#0x01
 	movx	@dptr,a
-;	timers.c:63: led_timer = 0;		
+;	timers.c:63: led_timer = 0;
 	mov	_led_timer,#0x00
 ;	timers.c:64: return;
 	sjmp	00114$
@@ -512,16 +513,11 @@ _tmr0isr:
 ;	timers.c:85: GPIO0OUT |= 1;
 	mov	dptr,#_GPIO0OUT
 	movx	a,@dptr
-	mov	r7,a
-	mov	r6,#0x00
-	orl	ar7,#0x01
-	mov	dptr,#_GPIO0OUT
-	mov	a,r7
+	orl	acc,#0x01
 	movx	@dptr,a
 00114$:
 ;	timers.c:87: }
 	pop	psw
-	pop	ar6
 	pop	ar7
 	pop	dph
 	pop	dpl
@@ -531,7 +527,7 @@ _tmr0isr:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'SetLEDThreshold'
 ;------------------------------------------------------------
-;threshold                 Allocated to registers r6 r7 
+;threshold                 Allocated to registers r6 r7
 ;------------------------------------------------------------
 ;	timers.c:89: void SetLEDThreshold(int threshold)
 ;	-----------------------------------------

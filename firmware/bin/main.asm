@@ -1,10 +1,10 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.7.1 #10443 (MINGW64)
+; Version 4.2.0 #13081 (Linux)
 ;--------------------------------------------------------
 	.module main
 	.optsdcc -mmcs51 --model-small
-	
+
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
@@ -217,13 +217,13 @@ _wait_counter::
 _wait_tick::
 	.ds 4
 ;--------------------------------------------------------
-; overlayable items in internal ram 
+; overlayable items in internal ram
 ;--------------------------------------------------------
 	.area	OSEG    (OVR,DATA)
 _SendKey_PARM_2:
 	.ds 1
 ;--------------------------------------------------------
-; Stack segment in internal ram 
+; Stack segment in internal ram
 ;--------------------------------------------------------
 	.area	SSEG
 __start__stack:
@@ -310,7 +310,7 @@ _PRAMCTL	=	0xfa48
 	.area GSFINAL (CODE)
 	.area CSEG    (CODE)
 ;--------------------------------------------------------
-; interrupt vector 
+; interrupt vector
 ;--------------------------------------------------------
 	.area HOME    (CODE)
 __interrupt_vect:
@@ -832,8 +832,8 @@ _DoUSBRelatedInit:
 ;Allocation info for local variables in function 'SendKey'
 ;------------------------------------------------------------
 ;modifiers                 Allocated with name '_SendKey_PARM_2'
-;code                      Allocated to registers r7 
-;i                         Allocated to registers r6 r7 
+;code                      Allocated to registers r7
+;i                         Allocated to registers r6 r7
 ;------------------------------------------------------------
 ;	main.c:422: void SendKey(BYTE code, BYTE modifiers)
 ;	-----------------------------------------
@@ -849,7 +849,6 @@ _SendKey:
 00101$:
 	mov	dptr,#(_EP3 + 0x0013)
 	movx	a,@dptr
-	mov	r6,a
 	jb	acc.6,00101$
 ;	main.c:429: EP3.fifo = modifiers;
 ;	main.c:430: EP3.fifo = 0;
